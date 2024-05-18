@@ -36,7 +36,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 1000
 vim.opt.wrap = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
