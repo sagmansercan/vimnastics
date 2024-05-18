@@ -14,6 +14,7 @@ vim.opt.expandtab = true
 vim.opt.fileencoding = 'utf-8'
 -- vim.opt.foldclose = 'all' -- TODO: check if ok
 vim.opt.foldmethod = 'indent'
+vim.opt.foldlevel = 1
 -- vim.opt.foldopen = 'all' -- TODO: check if ok
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
