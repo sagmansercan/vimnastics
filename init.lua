@@ -7,7 +7,6 @@ vim.opt.autoread = true
 vim.opt.autowrite = true -- TODO: check if ok
 -- vim.opt.breakindent = true
 vim.opt.clipboard = 'unnamedplus'
-vim.opt.confirm = true
 -- vim.opt.copyindent = true -- TODO: check if ok
 vim.opt.cursorline = true
 vim.opt.debug = 'msg'
