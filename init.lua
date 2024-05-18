@@ -65,7 +65,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -433,7 +432,7 @@ require('lazy').setup({
         end,
     },
 
-    { -- You can easily change to a different colorscheme.
+    {
         -- Change the name of the colorscheme plugin below, and then
         -- change the command in the config to whatever the name of that colorscheme is.
         --
@@ -451,7 +450,6 @@ require('lazy').setup({
         end,
     },
 
-    -- Highlight todo, notes, etc in comments
     {
         'folke/todo-comments.nvim',
         event = 'VimEnter',
@@ -461,7 +459,7 @@ require('lazy').setup({
         },
     },
 
-    { -- Collection of various small independent plugins/modules
+    {
         'echasnovski/mini.nvim',
         config = function()
             -- Better Around/Inside textobjects
@@ -483,20 +481,13 @@ require('lazy').setup({
             --  You could remove this setup call if you don't like it,
             --  and try some other statusline plugin
             local statusline = require 'mini.statusline'
-            -- set use_icons to true if you have a Nerd Font
             statusline.setup { use_icons = vim.g.have_nerd_font }
 
-            -- You can configure sections in the statusline by overriding their
-            -- default behavior. For example, here we set the section for
-            -- cursor location to LINE:COLUMN
             ---@diagnostic disable-next-line: duplicate-set-field
             statusline.section_location = function() return '%2l:%-2v' end
-
-            -- ... and there is more!
-            --  Check out: https://github.com/echasnovski/mini.nvim
         end,
     },
-    { -- Highlight, edit, and navigate code
+    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         opts = {
@@ -534,13 +525,8 @@ require('lazy').setup({
     -- require 'vikick.plugins.lint',
     -- require 'vikick.plugins.autopairs',
     require 'vikick.plugins.neo-tree',
-    require 'vikick.plugins.gitsigns', -- adds gitsigns recommend keymaps
+    require 'vikick.plugins.gitsigns',
 
-    -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-    --    This is the easiest way to modularize your config.
-    --
-    --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-    --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
     -- { import = 'custom.plugins' },
 }, {
     ui = {
