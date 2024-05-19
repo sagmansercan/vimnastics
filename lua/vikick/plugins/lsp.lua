@@ -96,6 +96,81 @@ return {
                     },
                 },
             },
+            pyright = { -- https://github.com/microsoft/pyright
+                -- cmd = {...},
+                -- filetypes = { ...},
+                -- capabilities = {},
+                settings = {
+                    python = {
+                        analysis = {
+                            -- autoSearchPaths = true,
+                            diagnosticMode = 'openFilesOnly',
+                            -- typeCheckingMode = 'off', -- this is very annoying when using Optional arguments in functions. Who cares the types in python anyway :P
+                            typeCheckingMode = 'strict',
+                            diagnosticSeverityOverrides = {
+                                reportMissingImports = 'error',
+                                reportUnknownVariableType = 'none', -- there are too much usage of Union in python
+                                reportUnusedImport = 'error',
+                                reportUnusedClass = 'error',
+                                reportUnusedFunction = 'error',
+                                reportUnusedVariable = 'error',
+                                reportDuplicateImport = 'error',
+                                reportWildcardImportFromLibrary = 'error',
+                                reportUndefinedVariable = 'error',
+                            },
+                        },
+                    },
+                },
+            },
+            -- [[
+            -- jdtls is disables in favor of mfussenegger/nvim-jdtls plugin for better integration
+            --
+            -- jdtls = {
+            --     -- cmd = {...},
+            --     -- filetypes = { ...},
+            --     -- capabilities = {},
+            --     -- settings = {
+            --     --     java = {
+            --     --         signatureHelp = {
+            --     --             enabled = true,
+            --     --         },
+            --     --         completion = {
+            --     --             favoriteStaticMembers = {
+            --     --                 'org.hamcrest.MatcherAssert.assertThat',
+            --     --                 'org.hamcrest.Matchers.*',
+            --     --                 'org.junit.jupiter.api.Assertions.*',
+            --     --                 'org.junit.jupiter.api.Assumptions.*',
+            --     --                 'org.junit.jupiter.api.DynamicContainer.dynamicContainer',
+            --     --                 'org.junit.jupiter.api.DynamicTest.dynamicTest',
+            --     --                 'org.junit.jupiter.api.TestFactory',
+            --     --                 'org.junit.jupiter.api.TestTemplate',
+            --     --                 'org.mockito.Mockito.*',
+            --     --             },
+            --     --         },
+            --     --         sources = {
+            --     --             organizeImports = {
+            --     --                 starThreshold = 9999,
+            --     --                 staticStarThreshold = 9999,
+            --     --             },
+            --     --         },
+            --     --         codeGeneration = {
+            --     --             toString = {
+            --     --                 template = 'ToStringBuilder.reflectionToString(this, org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE)',
+            --     --                 style = 'apache',
+            --     --             },
+            --     --         },
+            --     --         configuration = {
+            --     --             runtimes = {
+            --     --                 {
+            --     --                     name = 'JavaSE-11',
+            --     --                     path = '/usr/lib/jvm/java-11-openjdk',
+            --     --                 },
+            --     --             },
+            --     --         },
+            --     --     },
+            --     -- },
+            -- },
+            -- ]]
         }
 
         require('mason').setup()
