@@ -1,5 +1,5 @@
-require 'vikick.options'
-require 'vikick.autocmds'
+require 'vikick.global.options'
+require 'vikick.global.autocmds'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
