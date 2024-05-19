@@ -34,7 +34,6 @@ require('lazy').setup({
     require 'vimnastic.plugins.mini',
     require 'vimnastic.plugins.treesitter',
     require 'vimnastic.plugins.debug',
-    -- require 'vimnastic.plugins.indent_line',
     require 'vimnastic.plugins.lint',
     require 'vimnastic.plugins.autopairs',
     require 'vimnastic.plugins.neo-tree',
