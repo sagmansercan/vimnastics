@@ -11,6 +11,10 @@ return {
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('vikick-lsp-attach', { clear = true }),
             callback = function(event)
+                local client = vim.lsp.get_client_by_id(event.data.client_id)
+                if not client then return end
+                if client.name == 'copilot' then return end
+
                 local map = function(keys, func, desc) vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc }) end
 
                 map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
@@ -24,8 +28,7 @@ return {
                 map('K', vim.lsp.buf.hover, 'Hover Documentation')
                 map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-                local client = vim.lsp.get_client_by_id(event.data.client_id)
-                if client and client.server_capabilities.documentHighlightProvider then
+                if client.server_capabilities.documentHighlightProvider then
                     local highlight_augroup = vim.api.nvim_create_augroup('vikick-lsp-highlight', { clear = false })
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = event.buf,
@@ -45,8 +48,13 @@ return {
                         end,
                     })
                 end
-                if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-                    map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {}) end, '[T]oggle Inlay [H]ints')
+                if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+                    map('<leader>tih', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {}) end, '[T]oggle Inlay [H]ints')
+                end
+
+                if client.name == 'jdtls' then
+                    -- Telescope bug
+                    map('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', '[G]oto [D]efinition')
                 end
             end,
         })
