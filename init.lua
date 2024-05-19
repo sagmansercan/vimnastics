@@ -17,6 +17,9 @@ require('lazy').setup({
             vim.cmd.colorscheme 'tokyonight-night'
             vim.cmd.hi 'Comment gui=none'
         end,
+        opts = {
+            transparent = true,
+        },
     },
     { 'tpope/vim-sleuth' },
     { 'numToStr/Comment.nvim', opts = {} },
