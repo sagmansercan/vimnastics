@@ -25,7 +25,7 @@ require('lazy').setup({
     require 'vimnastics.plugins.cmp',
     require 'vimnastics.plugins.mini',
     require 'vimnastics.plugins.treesitter',
-    require 'vimnastics.plugins.debug',
+    require 'vimnastics.plugins.dap',
     require 'vimnastics.plugins.lint',
     require 'vimnastics.plugins.autopairs',
     require 'vimnastics.plugins.neo-tree',
