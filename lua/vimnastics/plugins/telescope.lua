@@ -37,6 +37,13 @@ return {
                 ['ui-select'] = {
                     require('telescope.themes').get_dropdown(),
                 },
+                fzf = {
+                    fuzzy = true, -- false will only do exact matching
+                    override_generic_sorter = true, -- override the generic sorter
+                    override_file_sorter = true, -- override the file sorter
+                    -- case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+                    -- the default case_mode is "smart_case"
+                },
             },
         }
 
@@ -50,14 +57,15 @@ return {
         vim.keymap.set('n', '<leader>f', function()
             -- custom opts
             builtin.find_files(require('telescope.themes').get_ivy {
-                border = true,
+                border = false,
                 previewer = true,
+                layout_strategy = 'horizontal',
                 layout_config = {
-                    -- width = 0.8,
-                    height = 0.6,
+                    width = 0.8,
+                    height = 0.8,
                 },
-                sorting_strategy = 'ascending',
-                line_width = 0.7,
+                sorting_strategy = 'descending',
+                line_width = 0.8,
             })
         end, { desc = 'Search Files' })
         vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = '[S]earch by [G]rep' })
