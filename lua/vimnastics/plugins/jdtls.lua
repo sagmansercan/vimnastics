@@ -6,18 +6,28 @@ function M.setup()
     local jdtls_dap = require 'jdtls.dap'
     local jdtls_setup = require 'jdtls.setup'
     local home = os.getenv 'HOME'
-    -- local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
-    local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }
+    local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
+    -- local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }
     local root_dir = jdtls_setup.find_root(root_markers)
     local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
     local workspace_dir = home .. '/.cache/jdtls/workspace' .. project_name
 
-    local path_jdtls_config = '/Users/sercans/source/opensource/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac_arm/'
-    local lombok_path = '/Users/sercans/custom-binaries/java-lombok/lombok.jar'
-    local path_jdtls_jar =
-        '/Users/sercans/source/opensource/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.800.v20240426-1701.jar'
-    local path_jdebug_jar = '/Users/sercans/source/opensource/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.52.0.jar'
-    local path_jtest_jar = '/Users/sercans/source/opensource/vscode-java-test/server/*.jar'
+    -- external deps:
+    -- - java language server -> https://github.com/eclipse-jdtls/eclipse.jdt.ls
+    -- - java debug adapter -> https://github.com/microsoft/java-debug
+    -- - debug support for java test -> https://github.com/microsoft/vscode-java-test
+    -- - lombok: getters and setters decorator -> https://github.com/projectlombok/lombok
+    -- NOTE: PERSONAL CONFIGURATION
+    local opensource_repos_path = home .. '/source/opensource'
+    local custom_binaries_path = home .. '/custom-binaries'
+    local path_jdtls_config = opensource_repos_path .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac_arm/'
+    -- NOTE: PERSONAL CONFIGURATION
+
+    local path_jdtls_jar = opensource_repos_path
+        .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.800.v20240426-1701.jar' -- NOTE: review version
+    local path_jdebug_jar = opensource_repos_path .. '/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.52.0.jar' -- NOTE: review version
+    local path_jtest_jar = opensource_repos_path .. '/vscode-java-test/server/*.jar'
+    local lombok_path = custom_binaries_path .. '/java-lombok/lombok.jar'
 
     local bundles = {
         vim.fn.glob(path_jdebug_jar, true),
