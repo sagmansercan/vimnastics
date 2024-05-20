@@ -29,6 +29,7 @@ require('lazy').setup({
     require 'vimnastics.plugins.lint',
     require 'vimnastics.plugins.autopairs',
     require 'vimnastics.plugins.neo-tree',
+    require 'vimnastics.plugins.trouble',
     {
         'folke/todo-comments.nvim',
         event = 'VimEnter',
