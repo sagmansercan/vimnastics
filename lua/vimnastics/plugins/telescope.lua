@@ -48,7 +48,7 @@ return {
         vim.keymap.set('n', '<leader>f', function()
             -- custom opts
             builtin.find_files(require('telescope.themes').get_ivy {
-                border = false,
+                border = true,
                 previewer = true,
                 layout_config = {
                     -- width = 0.8,

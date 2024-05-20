@@ -42,6 +42,7 @@ require('lazy').setup({
         'mfussenegger/nvim-jdtls',
         dependencies = {
             'mfussenegger/nvim-dap',
+            require 'vimnastics.plugins.lsp_signature',
         },
     },
     -- { import = 'custom.plugins' },

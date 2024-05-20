@@ -34,15 +34,7 @@ function M.setup()
         -- Create a command `:Format` local to the LSP buffer
         vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_) vim.lsp.buf.format() end, { desc = 'Format current buffer with LSP' })
 
-        -- require('lsp_signature').on_attach({
-        --     bind = true,
-        --     padding = '',
-        --     handler_opts = {
-        --         border = 'rounded',
-        --     },
-        --     hint_prefix = '󱄑 ',
-        -- }, bufnr)
-
+        --
         -- -- NOTE: comment out if you don't use Lspsaga
         -- require('lspsaga').init_lsp_saga()
     end
