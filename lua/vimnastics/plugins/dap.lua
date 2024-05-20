@@ -6,6 +6,7 @@ return {
         'williamboman/mason.nvim',
         'jay-babu/mason-nvim-dap.nvim',
         'leoluz/nvim-dap-go',
+        'LiadOz/nvim-dap-repl-highlights',
     },
     config = function()
         local dap = require 'dap'
@@ -27,6 +28,8 @@ return {
                 'delve',
             },
         }
+
+        require('nvim-dap-repl-highlights').setup()
 
         -- Basic debugging keymaps, feel free to change to your liking!
         vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
