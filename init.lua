@@ -10,17 +10,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    {
-        'folke/tokyonight.nvim',
-        priority = 1000,
-        init = function()
-            vim.cmd.colorscheme 'tokyonight-night'
-            vim.cmd.hi 'Comment gui=none'
-        end,
-        opts = {
-            transparent = true,
-        },
-    },
+    require 'vimnastics.plugins.tokyonight',
     { 'tpope/vim-sleuth' }, -- auto shiftwidth, expandtab
     { 'christoomey/vim-tmux-navigator' },
     { 'numToStr/Comment.nvim', opts = {} },
