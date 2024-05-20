@@ -9,7 +9,7 @@ return {
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('vimnastic-lsp-attach', { clear = true }),
+            group = vim.api.nvim_create_augroup('vimnastics-lsp-attach', { clear = true }),
             callback = function(event)
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
                 if not client then return end
@@ -29,7 +29,7 @@ return {
                 map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
                 if client.server_capabilities.documentHighlightProvider then
-                    local highlight_augroup = vim.api.nvim_create_augroup('vimnastic-lsp-highlight', { clear = false })
+                    local highlight_augroup = vim.api.nvim_create_augroup('vimnastics-lsp-highlight', { clear = false })
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = event.buf,
                         group = highlight_augroup,
@@ -41,10 +41,10 @@ return {
                         callback = vim.lsp.buf.clear_references,
                     })
                     vim.api.nvim_create_autocmd('LspDetach', {
-                        group = vim.api.nvim_create_augroup('vimnastic-lsp-detach', { clear = true }),
+                        group = vim.api.nvim_create_augroup('vimnastics-lsp-detach', { clear = true }),
                         callback = function(event2)
                             vim.lsp.buf.clear_references()
-                            vim.api.nvim_clear_autocmds { group = 'vimnastic-lsp-highlight', buffer = event2.buf }
+                            vim.api.nvim_clear_autocmds { group = 'vimnastics-lsp-highlight', buffer = event2.buf }
                         end,
                     })
                 end

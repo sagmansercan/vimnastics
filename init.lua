@@ -1,5 +1,5 @@
-require 'vimnastic.global.options'
-require 'vimnastic.global.autocmds'
+require 'vimnastics.global.options'
+require 'vimnastics.global.autocmds'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -26,17 +26,17 @@ require('lazy').setup({
     { 'numToStr/Comment.nvim', opts = {} },
     { 'tpope/vim-fugitive' },
     { 'tpope/vim-rhubarb' },
-    require 'vimnastic.plugins.gitsigns',
-    require 'vimnastic.plugins.telescope',
-    require 'vimnastic.plugins.lsp',
-    require 'vimnastic.plugins.conform',
-    require 'vimnastic.plugins.cmp',
-    require 'vimnastic.plugins.mini',
-    require 'vimnastic.plugins.treesitter',
-    require 'vimnastic.plugins.debug',
-    require 'vimnastic.plugins.lint',
-    require 'vimnastic.plugins.autopairs',
-    require 'vimnastic.plugins.neo-tree',
+    require 'vimnastics.plugins.gitsigns',
+    require 'vimnastics.plugins.telescope',
+    require 'vimnastics.plugins.lsp',
+    require 'vimnastics.plugins.conform',
+    require 'vimnastics.plugins.cmp',
+    require 'vimnastics.plugins.mini',
+    require 'vimnastics.plugins.treesitter',
+    require 'vimnastics.plugins.debug',
+    require 'vimnastics.plugins.lint',
+    require 'vimnastics.plugins.autopairs',
+    require 'vimnastics.plugins.neo-tree',
     {
         'folke/todo-comments.nvim',
         event = 'VimEnter',
@@ -45,7 +45,7 @@ require('lazy').setup({
             signs = false,
         },
     },
-    require 'vimnastic.plugins.copilot',
+    require 'vimnastics.plugins.copilot',
     {
         'mfussenegger/nvim-jdtls',
         dependencies = {
