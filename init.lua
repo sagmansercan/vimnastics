@@ -14,8 +14,10 @@ require('lazy').setup({
     { 'tpope/vim-sleuth' }, -- auto shiftwidth, expandtab
     { 'christoomey/vim-tmux-navigator' },
     { 'numToStr/Comment.nvim', opts = {} },
-    { 'tpope/vim-fugitive' },
-    { 'tpope/vim-rhubarb' },
+    {
+        'tpope/vim-fugitive',
+        dependencies = { 'tpope/vim-rhubarb' }, -- GBrowse for GitHub
+    },
     require 'vimnastics.plugins.gitsigns',
     require 'vimnastics.plugins.telescope',
     require 'vimnastics.plugins.lsp',
