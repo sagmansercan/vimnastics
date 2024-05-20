@@ -76,26 +76,5 @@ return {
                 detached = vim.fn.has 'win32' == 0,
             },
         }
-
-        dap.configurations.java = {
-            {
-                -- You need to extend the classPath to list your dependencies.
-                -- `nvim-jdtls` would automatically add the `classPaths` property if it is missing
-                classPaths = {},
-
-                -- If using multi-module projects, remove otherwise.
-                projectName = 'java-app-training--with-test-jupiter',
-
-                javaExec = 'java',
-                mainClass = 'org.example.App',
-
-                -- If using the JDK9+ module system, this needs to be extended
-                -- `nvim-jdtls` would automatically populate this property
-                modulePaths = {},
-                name = 'Launch YourClassName',
-                request = 'launch',
-                type = 'java',
-            },
-        }
     end,
 }
