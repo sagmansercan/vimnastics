@@ -19,7 +19,7 @@ function M.setup()
     -- - lombok: getters and setters decorator -> https://github.com/projectlombok/lombok
     -- NOTE: PERSONAL CONFIGURATION
     local opensource_repos_path = home .. '/source/opensource'
-    local custom_binaries_path = home .. '/custom-binaries'
+    local custom_binaries_path = home .. '/source/bin'
     local path_jdtls_config = opensource_repos_path .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac_arm/'
     -- NOTE: PERSONAL CONFIGURATION
 
@@ -27,7 +27,7 @@ function M.setup()
         .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.800.v20240426-1701.jar' -- NOTE: review version
     local path_jdebug_jar = opensource_repos_path .. '/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.52.0.jar' -- NOTE: review version
     local path_jtest_jar = opensource_repos_path .. '/vscode-java-test/server/*.jar'
-    local lombok_path = custom_binaries_path .. '/java-lombok/lombok.jar'
+    local lombok_path = custom_binaries_path .. '/java/lombok.jar'
 
     local bundles = {
         vim.fn.glob(path_jdebug_jar, true),
