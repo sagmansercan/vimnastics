@@ -82,7 +82,7 @@ return {
                 },
                 sorting_strategy = 'descending',
             })
-        end, { desc = '[/] Fuzzily search in current buffer' })
+        end, { desc = 'Fuzzily search in current buffer' })
     end,
 }
 
