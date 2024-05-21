@@ -44,6 +44,7 @@ require('lazy').setup({
         dependencies = {
             'mfussenegger/nvim-dap',
             require 'vimnastics.plugins.lsp_signature',
+            require 'vimnastics.plugins.lspsaga',
         },
     },
     -- { import = 'custom.plugins' },

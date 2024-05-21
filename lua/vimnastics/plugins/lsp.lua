@@ -7,6 +7,7 @@ return {
         { 'j-hui/fidget.nvim', opts = {} },
         { 'folke/neodev.nvim', opts = {} },
         require 'vimnastics.plugins.lsp_signature',
+        require 'vimnastics.plugins.lspsaga',
     },
     config = function()
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -18,16 +19,16 @@ return {
 
                 local map = function(keys, func, desc) vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc }) end
 
-                map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-                map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                map('gR', vim.lsp.buf.rename, 'variable rename')
-                map('gi', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
-                map('gD', require('telescope.builtin').lsp_type_definitions, 'Type Definition')
-                map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+                -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+                -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+                -- map('gR', vim.lsp.buf.rename, 'variable rename')
+                -- map('gi', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
+                -- map('gD', require('telescope.builtin').lsp_type_definitions, 'Type Definition')
+                -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
                 map('<leader>dws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-                map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-                map('K', vim.lsp.buf.hover, 'Hover Documentation')
-                map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                -- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+                -- map('K', vim.lsp.buf.hover, 'Hover Documentation')
+                -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
                 if client.server_capabilities.documentHighlightProvider then
                     local highlight_augroup = vim.api.nvim_create_augroup('vimnastics-lsp-highlight', { clear = false })
