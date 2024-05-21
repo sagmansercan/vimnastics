@@ -84,8 +84,7 @@ return {
                         analysis = {
                             -- autoSearchPaths = true,
                             diagnosticMode = 'openFilesOnly',
-                            -- typeCheckingMode = 'off', -- this is very annoying when using Optional arguments in functions. Who cares the types in python anyway :P
-                            typeCheckingMode = 'strict',
+                            typeCheckingMode = 'standard',
                             diagnosticSeverityOverrides = {
                                 reportMissingImports = 'error',
                                 reportUnknownVariableType = 'none', -- there are too much usage of Union in python
