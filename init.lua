@@ -11,11 +11,18 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     require 'vimnastics.plugins.tokyonight',
-    { 'tpope/vim-sleuth' }, -- auto shiftwidth, expandtab
-    { 'christoomey/vim-tmux-navigator' },
-    { 'numToStr/Comment.nvim', opts = {} },
+    {
+        'tpope/vim-sleuth',
+        event = 'VeryLazy',
+    }, -- auto shiftwidth, expandtab
+    {
+        'christoomey/vim-tmux-navigator',
+        event = 'VeryLazy',
+    },
+    -- { 'numToStr/Comment.nvim', opts = {} },
     {
         'tpope/vim-fugitive',
+        event = 'VeryLazy',
         dependencies = { 'tpope/vim-rhubarb' }, -- GBrowse for GitHub
     },
     require 'vimnastics.plugins.gitsigns',
@@ -32,7 +39,7 @@ require('lazy').setup({
     require 'vimnastics.plugins.trouble',
     {
         'folke/todo-comments.nvim',
-        event = 'VimEnter',
+        event = 'VeryLazy',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {
             signs = false,
@@ -49,6 +56,9 @@ require('lazy').setup({
     },
     -- { import = 'custom.plugins' },
 }, {
+    defaults = {
+        lazy = true,
+    },
     ui = {
         -- If you are using a Nerd Font: set icons to an empty table which will use the
         -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
