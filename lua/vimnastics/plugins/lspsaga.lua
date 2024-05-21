@@ -27,4 +27,8 @@ return {
         vim.keymap.set('n', 'gpd', '<cmd>Lspsaga peek_definition<CR>', { desc = 'Lspsaga: go to definition' })
         vim.keymap.set('n', 'gpD', '<cmd>Lspsaga peek_type_definition<CR>', { desc = 'Lspsaga: go to type definition' })
     end,
+    dependencies = {
+        require 'vimnastics.plugins.treesitter',
+        'nvim-tree/nvim-web-devicons',
+    },
 }
