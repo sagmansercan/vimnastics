@@ -1,3 +1,23 @@
+local L = {}
+L.pick_vertical = function(picker_fn)
+    return function()
+        picker_fn(require('telescope.themes').get_ivy {
+            border = true,
+            previewer = true,
+            layout_strategy = 'vertical',
+            layout_config = {
+                -- width = 0.8,
+                height = 0.9,
+            },
+            sorting_strategy = 'descending',
+            -- line_width = 0.7,
+            -- winblend = 10,
+            -- results_title = false,
+            -- preview_title = false,
+        })
+    end
+end
+
 return {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -52,23 +72,12 @@ return {
         pcall(require('telescope').load_extension, 'dap')
 
         local builtin = require 'telescope.builtin'
-        vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = '[S]earch [H]elp' })
-        vim.keymap.set('n', '<leader>tk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-        vim.keymap.set('n', '<leader>f', function()
-            -- custom opts
-            builtin.find_files(require('telescope.themes').get_ivy {
-                border = false,
-                previewer = true,
-                layout_strategy = 'horizontal',
-                layout_config = {
-                    width = 0.8,
-                    height = 0.8,
-                },
-                sorting_strategy = 'descending',
-                line_width = 0.8,
-            })
-        end, { desc = 'Search Files' })
-        vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+        vim.keymap.set('n', '<leader>th', L.pick_vertical(builtin.help_tags), { desc = '[S]earch [H]elp' })
+        vim.keymap.set('n', '<leader>tk', L.pick_vertical(builtin.keymaps), { desc = '[S]earch [K]eymaps' })
+        vim.keymap.set('n', '<leader>f', L.pick_vertical(builtin.find_files), { desc = '[S]earch [F]iles' })
+        vim.keymap.set('n', '<leader>g', L.pick_vertical(builtin.live_grep), { desc = '[S]earch by [G]rep' })
+        vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles), { desc = '[S]earch Recent Files ("." for repeat)' })
+        vim.keymap.set('n', '<leader><leader>', L.pick_vertical(builtin.buffers), { desc = '[ ] Find existing buffers' })
         vim.keymap.set('n', '<leader>td', function()
             -- custom opts
             builtin.diagnostics(require('telescope.themes').get_ivy {
@@ -81,8 +90,6 @@ return {
                 line_width = 0.7,
             })
         end, { desc = 'Search Diagnostics' })
-        vim.keymap.set('n', '<leader>o', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-        vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
         vim.keymap.set('n', '<leader>s', function()
             builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                 -- winblend = 1,
