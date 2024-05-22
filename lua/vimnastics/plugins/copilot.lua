@@ -38,9 +38,17 @@ return {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
+    dependencies = {
+        {
+            'zbirenbaum/copilot-cmp',
+            config = function()
+                require('copilot_cmp').setup()
+            end,
+        },
+    },
     opts = {
         panel = {
-            enabled = true,
+            enabled = false,
             auto_refresh = false,
             keymap = {
                 jump_prev = '[[',
@@ -55,7 +63,7 @@ return {
             },
         },
         suggestion = {
-            enabled = true,
+            enabled = false,
             auto_trigger = true,
             debounce = 75,
             keymap = {
@@ -78,7 +86,7 @@ return {
             cvs = false,
             ['.'] = false,
         },
-        copilot_node_command = 'node', -- Node.js version must be > 18.x
+        copilot_node_command = 'node',
         server_opts_overrides = {
             -- trace = 'verbose',
             settings = {
@@ -90,7 +98,6 @@ return {
         },
     },
     config = function(_, opts)
-        -- requires setup
         require('copilot').setup(opts)
     end,
 }
