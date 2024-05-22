@@ -67,7 +67,7 @@ function M.setup()
     -- local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }
     local root_dir = jdtls_setup.find_root(root_markers)
     local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
-    local workspace_dir = home .. '/.cache/jdtls/workspace' .. project_name
+    local workspace_dir = home .. '/.cache/jdtls/workspace/' .. project_name
 
     -- external deps:
     -- - java language server -> https://github.com/eclipse-jdtls/eclipse.jdt.ls
@@ -88,13 +88,6 @@ function M.setup()
     local on_attach = function(_, bufnr)
         jdtls.setup_dap { config_overrides = { hotcodereplace = 'auto' } }
         jdtls_dap.setup_dap_main_class_configs()
-
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_) vim.lsp.buf.format() end, { desc = 'Format current buffer with LSP' })
-
-        --
-        -- -- NOTE: comment out if you don't use Lspsaga
-        -- require('lspsaga').init_lsp_saga()
     end
 
     local capabilities = {
@@ -221,7 +214,9 @@ function M.setup()
 
     config.on_attach = on_attach
     config.capabilities = capabilities
-    config.on_init = function(client, _) client.notify('workspace/didChangeConfiguration', { settings = config.settings }) end
+    config.on_init = function(client, _)
+        client.notify('workspace/didChangeConfiguration', { settings = config.settings })
+    end
 
     local extendedClientCapabilities = require('jdtls').extendedClientCapabilities
     extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
@@ -233,9 +228,6 @@ function M.setup()
 
     -- Start Server
     require('jdtls').start_or_attach(config)
-
-    -- -- Set Java Specific Keymaps
-    -- require 'jdtls.keymaps'
 end
 
 return M
