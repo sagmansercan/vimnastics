@@ -27,6 +27,7 @@ return {
         vim.keymap.set('n', 'gD', '<cmd>Lspsaga goto_type_definition<CR>', { desc = 'Lspsaga: go to type definition' })
         vim.keymap.set('n', 'gpd', '<cmd>Lspsaga peek_definition<CR>', { desc = 'Lspsaga: go to definition' })
         vim.keymap.set('n', 'gpD', '<cmd>Lspsaga peek_type_definition<CR>', { desc = 'Lspsaga: go to type definition' })
+        vim.keymap.set('n', 'tt', '<cmd>Lspsaga term_toggle<CR>', { desc = 'Lspsaga: pop up terminal' })
     end,
     dependencies = {
         require 'vimnastics.plugins.treesitter',
