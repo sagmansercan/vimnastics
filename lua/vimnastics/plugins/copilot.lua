@@ -1,32 +1,3 @@
--- -- Create an autocmd group for Copilot
--- vim.api.nvim_create_augroup('CopilotConfig', { clear = true })
---
--- vim.api.nvim_create_autocmd('InsertLeave', {
---     group = 'CopilotConfig',
---     pattern = '*',
---     callback = function()
---         -- Check if the current buffer is a 'dap-repl' buffer
---         local buftype = vim.api.nvim_get_option_value('buftype', { buf = 0 })
---         if buftype ~= 'prompt' then
---             -- It's safe to disable Copilot here
---             vim.cmd 'Copilot disable'
---         end
---     end,
--- })
---
--- vim.api.nvim_create_autocmd('InsertEnter', {
---     group = 'CopilotConfig',
---     pattern = '*',
---     callback = function()
---         -- Check if the current buffer is a 'dap-repl' buffer
---         local buftype = vim.api.nvim_get_option_value('buftype', { buf = 0 })
---         if buftype ~= 'prompt' then
---             -- It's safe to enable Copilot here
---             vim.cmd 'Copilot enable'
---         end
---     end,
--- })
-
 -- Here a different copilot plugin is used, becuase the original one is not working.
 -- The original plugin is: github.com/copilot.vim
 -- Below is the failure message from the original plugin:
@@ -38,14 +9,6 @@ return {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
-    dependencies = {
-        {
-            'zbirenbaum/copilot-cmp',
-            config = function()
-                require('copilot_cmp').setup()
-            end,
-        },
-    },
     opts = {
         panel = {
             enabled = false,
@@ -63,7 +26,7 @@ return {
             },
         },
         suggestion = {
-            enabled = false,
+            enabled = true,
             auto_trigger = true,
             debounce = 50,
             keymap = {

@@ -55,12 +55,10 @@ return {
 
                     -- mode = 'symbol', -- show only symbol annotations
                     -- symbol_map = {
-                    --     Copilot = '',
                     -- },
 
                     mode = 'symbol_text',
                     menu = {
-                        copilot = '[AI]',
                         buffer = '[Buffer]',
                         nvim_lsp = '[LSP]',
                         luasnip = '[LuaSnip]',
@@ -97,7 +95,6 @@ return {
             },
             sources = {
                 { name = 'nvim_lsp' },
-                { name = 'copilot' },
                 { name = 'luasnip' },
                 { name = 'path' },
             },
