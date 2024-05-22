@@ -119,23 +119,37 @@ function M.setup()
         '-Xmx3g',
         '-javaagent:' .. lombok_path,
         '--add-modules=ALL-SYSTEM',
+
         '--add-opens',
         'java.base/java.util=ALL-UNNAMED',
+
         '--add-opens',
         'java.base/java.lang=ALL-UNNAMED',
+
         '-jar',
         path_jdtls_jar,
+
         '-configuration',
         path_jdtls_config,
+
         '-data',
         workspace_dir,
     }
 
     config.settings = {
         java = {
-            -- references = {
-            --   includeDecompiledSources = true,
-            -- },
+            contentProvider = { preferred = 'fernflower' },
+            eclipse = {
+                downloadSources = true,
+            },
+            implementationsCodeLens = {
+                enabled = true,
+            },
+            references = {
+                includeAccessors = true,
+                includeDecompiledSources = true,
+            },
+            signatureHelp = { enabled = true },
             -- format = {
             --   enabled = true,
             --   settings = {
@@ -143,20 +157,9 @@ function M.setup()
             --     profile = "GoogleStyle",
             --   },
             -- },
-            -- eclipse = {
-            --   downloadSources = true,
-            -- },
-            -- maven = {
-            --   downloadSources = true,
-            -- },
-            -- signatureHelp = { enabled = true },
-            -- contentProvider = { preferred = "fernflower" },
-            -- -- eclipse = {
-            -- -- 	downloadSources = true,
-            -- -- },
-            -- -- implementationsCodeLens = {
-            -- -- 	enabled = true,
-            -- -- },
+            maven = {
+                downloadSources = true,
+            },
             -- completion = {
             --   favoriteStaticMembers = {
             --     "org.hamcrest.MatcherAssert.assertThat",
