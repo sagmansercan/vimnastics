@@ -37,7 +37,10 @@ return {
         local actions = require 'telescope.actions'
         require('telescope').setup {
             defaults = {
-                file_ignore_patterns = { '^.git/*' },
+                file_ignore_patterns = {
+                    '^.git/*',
+                    '**/*.class', -- compiled java classes
+                },
                 mappings = {
                     i = {
                         ['<C-c>'] = actions.close,
