@@ -22,10 +22,16 @@ return {
             group = vim.api.nvim_create_augroup('vimnastics-lsp-attach', { clear = true }),
             callback = function(event)
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
-                if not client then return end
-                if client.name == 'copilot' then return end
+                if not client then
+                    return
+                end
+                if client.name == 'copilot' then
+                    return
+                end
 
-                local map = function(keys, func, desc) vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc }) end
+                local map = function(keys, func, desc)
+                    vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+                end
 
                 -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
                 -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -59,7 +65,9 @@ return {
                     })
                 end
                 if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-                    map('<leader>tih', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {}) end, '[T]oggle Inlay [H]ints')
+                    map('<leader>tih', function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
+                    end, '[T]oggle Inlay [H]ints')
                 end
 
                 if client.name == 'jdtls' then
