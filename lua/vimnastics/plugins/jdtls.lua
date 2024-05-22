@@ -1,11 +1,68 @@
 -- nvim-jdtls, not jdtls directly
 local M = {}
+local home = os.getenv 'HOME' .. '/'
+
+local function get_java_debug_bundles()
+    local project_path_prefix = 'source/opensource/'
+    local project_folder = 'java-debug/'
+    local java_debug_project_path = home .. project_path_prefix .. project_folder
+    local glob_1 = java_debug_project_path .. '/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'
+    return vim.split(vim.fn.glob(glob_1, true), '\n')
+end
+
+local function get_vscode_java_test_bundles()
+    local project_path_prefix = 'source/opensource/'
+    local project_folder = 'vscode-java-test/'
+    local vscode_java_test_project_path = home .. project_path_prefix .. project_folder
+    local glob_1 = vscode_java_test_project_path .. '/server/*.jar'
+    -- local glob_2 = vscode_java_test_project_path .. 'java-extension/com.microsoft.java.test.plugin/target/*.jar'
+    -- local glob_3 = vscode_java_test_project_path .. 'java-extension/com.microsoft.java.test.runner/target/*.jar'
+    -- local glob_4 = vscode_java_test_project_path .. 'java-extension/com.microsoft.java.test.runner/lib/*.jar'
+    -- local glob_5 = vscode_java_test_project_path .. '/java-extension/com.microsoft.java.test.plugin.site/target/repository/plugins/*.jar'
+
+    local bundles = {}
+    vim.list_extend(bundles, vim.split(vim.fn.glob(glob_1, true), '\n'))
+    -- vim.list_extend(bundles, vim.split(vim.fn.glob(glob_2, true), '\n'))
+    -- vim.list_extend(bundles, vim.split(vim.fn.glob(glob_3, true), '\n'))
+    -- vim.list_extend(bundles, vim.split(vim.fn.glob(glob_4, true), '\n'))
+    -- vim.list_extend(bundles, vim.split(vim.fn.glob(glob_5, true), '\n'))
+
+    local excluded_bundles = {
+        'com.microsoft.java.test.runner-jar-with-dependencies.jar',
+        'jacocoagent.jar',
+        -- 'com.microsoft.java.test.runner.jar',
+    }
+
+    local filtered_bundles = {}
+    for _, bundle in ipairs(bundles) do
+        local is_excluded = false
+        for _, excluded_bundle in ipairs(excluded_bundles) do
+            if vim.endswith(bundle, excluded_bundle) then
+                is_excluded = true
+                break
+            end
+        end
+
+        if not is_excluded then
+            table.insert(filtered_bundles, bundle)
+        end
+    end
+
+    return filtered_bundles
+end
+
+local function get_bundles()
+    local bundles = {}
+    vim.list_extend(bundles, get_java_debug_bundles())
+    vim.list_extend(bundles, get_vscode_java_test_bundles())
+
+    return bundles
+end
 
 function M.setup()
     local jdtls = require 'jdtls'
     local jdtls_dap = require 'jdtls.dap'
     local jdtls_setup = require 'jdtls.setup'
-    local home = os.getenv 'HOME'
     local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
     -- local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml' }
     local root_dir = jdtls_setup.find_root(root_markers)
@@ -25,15 +82,7 @@ function M.setup()
 
     local path_jdtls_jar = opensource_repos_path
         .. '/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.800.v20240426-1701.jar' -- NOTE: review version
-    local path_jdebug_jar = opensource_repos_path .. '/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.52.0.jar' -- NOTE: review version
-    local path_jtest_jar = opensource_repos_path .. '/vscode-java-test/server/*.jar'
     local lombok_path = custom_binaries_path .. '/java/lombok.jar'
-
-    local bundles = {
-        vim.fn.glob(path_jdebug_jar, true),
-    }
-
-    vim.list_extend(bundles, vim.split(vim.fn.glob(path_jtest_jar, true), '\n'))
 
     -- LSP settings for Java.
     local on_attach = function(_, bufnr)
@@ -178,7 +227,7 @@ function M.setup()
     extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
     config.init_options = {
-        bundles = bundles,
+        bundles = get_bundles(),
         extendedClientCapabilities = extendedClientCapabilities,
     }
 
