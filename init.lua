@@ -55,6 +55,11 @@ require('lazy').setup({
             require 'vimnastics.plugins.lspsaga',
         },
     },
+    {
+        'ellisonleao/glow.nvim',
+        config = true,
+        cmd = 'Glow',
+    },
     -- { import = 'custom.plugins' },
 }, {
     defaults = {
