@@ -7,7 +7,7 @@ return {
                 default = 'def+ref+imp',
                 layout = 'normal', -- normal | float
                 keys = {
-                    shuttle = '<C-n>',
+                    shuttle = '<C-u>',
                 },
             },
             lightbulb = {
