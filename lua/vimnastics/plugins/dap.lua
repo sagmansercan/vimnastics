@@ -38,7 +38,9 @@ return {
         vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
         vim.keymap.set('n', '<F12>', dap.close, { desc = 'Debug: Step Out' })
         vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-        vim.keymap.set('n', '<leader>B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { desc = 'Debug: Set Breakpoint' })
+        vim.keymap.set('n', '<leader>B', function()
+            dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+        end, { desc = 'Debug: Set Breakpoint' })
         vim.keymap.set('n', '<leader>do', dapui.open, { desc = 'DAPUI open' })
         vim.keymap.set('n', '<leader>dc', dapui.close, { desc = 'DAPUI Close' })
         vim.keymap.set('n', '<leader>dro', dap.repl.open, { desc = 'DAPrepl open' })
@@ -51,9 +53,6 @@ return {
         -- Dap UI setup
         -- For more information, see |:help nvim-dap-ui|
         dapui.setup {
-            -- Set icons to characters that are more likely to work in every terminal.
-            --    Feel free to remove or use ones that you like more! :)
-            --    Don't feel like these are good choices.
             icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
             controls = {
                 icons = {
@@ -76,6 +75,9 @@ return {
         -- dap.listeners.after.event_initialized['dapui_config'] = dapui.open
         dap.listeners.before.event_terminated['dapui_config'] = dapui.close
         dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+        vim.fn.sign_define('DapBreakpoint', { text = '🚩' })
+        vim.fn.sign_define('DapStopped', { text = '🟡' })
 
         -- Install golang specific config
         require('dap-go').setup {
