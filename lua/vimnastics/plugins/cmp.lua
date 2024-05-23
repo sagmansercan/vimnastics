@@ -42,7 +42,7 @@ return {
             completion = {
                 completeopt = 'menu,menuone,noinsert',
                 -- autocomplete = false,
-                keyword_length = 2,
+                -- keyword_length = 2,
             },
             ---@diagnostic disable-next-line: missing-fields
             formatting = {
