@@ -25,6 +25,7 @@ require('lazy').setup({
         event = 'VeryLazy',
         dependencies = { 'tpope/vim-rhubarb' }, -- GBrowse for GitHub
     },
+    require 'vimnastics.plugins.harpoon',
     require 'vimnastics.plugins.gitsigns',
     require 'vimnastics.plugins.telescope',
     require 'vimnastics.plugins.cmp',
