@@ -150,13 +150,14 @@ function M.setup()
                 includeDecompiledSources = true,
             },
             signatureHelp = { enabled = true },
-            -- format = {
-            --   enabled = true,
-            --   settings = {
-            --     url = vim.fn.stdpath("config") .. "/lang_servers/intellij-java-google-style.xml",
-            --     profile = "GoogleStyle",
-            --   },
-            -- },
+            format = {
+                enabled = true,
+                settings = {
+                    -- url = 'https://github.com/google/google-java-format',
+                    url = 'https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml',
+                    profile = 'GoogleStyle',
+                },
+            },
             maven = {
                 downloadSources = true,
             },
