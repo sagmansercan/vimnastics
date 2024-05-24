@@ -5,7 +5,6 @@ vim.g.have_nerd_font = true
 vim.opt.autoread = true
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
-vim.opt.debug = 'msg'
 vim.opt.expandtab = true
 vim.opt.fileencoding = 'utf-8'
 vim.opt.foldmethod = 'indent'
