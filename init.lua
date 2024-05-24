@@ -60,6 +60,11 @@ require('lazy').setup({
         cmd = 'Glow',
     },
     require 'vimnastics.plugins.copilot',
+    {
+        'sagmansercan/nvim-llama',
+        event = 'VeryLazy',
+        opts = {},
+    },
     -- { import = 'custom.plugins' },
 }, {
     defaults = {
