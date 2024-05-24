@@ -46,7 +46,6 @@ require('lazy').setup({
             signs = false,
         },
     },
-    require 'vimnastics.plugins.copilot',
     {
         'mfussenegger/nvim-jdtls',
         dependencies = {
@@ -60,6 +59,7 @@ require('lazy').setup({
         config = true,
         cmd = 'Glow',
     },
+    require 'vimnastics.plugins.copilot',
     -- { import = 'custom.plugins' },
 }, {
     defaults = {
