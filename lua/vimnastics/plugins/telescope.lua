@@ -77,11 +77,11 @@ return {
         pcall(require('telescope').load_extension, 'dap')
 
         local builtin = require 'telescope.builtin'
-        vim.keymap.set('n', '<leader>th', L.pick_vertical(builtin.help_tags), { desc = '[S]earch [H]elp' })
-        vim.keymap.set('n', '<leader>tk', L.pick_vertical(builtin.keymaps), { desc = '[S]earch [K]eymaps' })
-        vim.keymap.set('n', '<leader>f', L.pick_vertical(builtin.find_files), { desc = '[S]earch [F]iles' })
-        vim.keymap.set('n', '<leader>g', L.pick_vertical(builtin.live_grep), { desc = '[S]earch by [G]rep' })
-        vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles), { desc = '[S]earch Recent Files ("." for repeat)' })
+        vim.keymap.set('n', '<leader>th', L.pick_vertical(builtin.help_tags), { desc = 'Search Help' })
+        vim.keymap.set('n', '<leader>tk', L.pick_vertical(builtin.keymaps), { desc = 'Search Keymaps' })
+        vim.keymap.set('n', '<leader>f', L.pick_vertical(builtin.find_files), { desc = 'Search Files' })
+        vim.keymap.set('n', '<leader>y', L.pick_vertical(builtin.live_grep), { desc = 'Search by Grep' })
+        vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles), { desc = 'Search Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader><leader>', L.pick_vertical(builtin.buffers), { desc = '[ ] Find existing buffers' })
         vim.keymap.set('n', '<leader>td', function()
             -- custom opts
