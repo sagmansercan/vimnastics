@@ -44,4 +44,5 @@ vim.keymap.set('n', '<leader>bD', '<cmd>bd!<CR>', { desc = 'force delete current
 vim.keymap.set('n', '<leader>be', '<cmd>%bd|e#|bd#<CR>', { desc = 'Delete all buffers except current' })
 vim.keymap.set('n', '<C-e>', 'ggVG', { desc = 'Select all' })
 vim.keymap.set('n', '<leader>w', '<cmd>:q<CR>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>q', '<cmd>:qa<CR>', { desc = 'Quit' })
 vim.keymap.set('n', '<C-n>', '/', { desc = 'Search raw' })
