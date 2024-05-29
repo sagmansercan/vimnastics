@@ -65,6 +65,19 @@ require('lazy').setup({
         event = 'VeryLazy',
     },
     {
+        'rasulomaroff/reactive.nvim',
+        event = 'VeryLazy',
+        config = function()
+            require('reactive').setup {
+                builtin = {
+                    cursorline = true,
+                    cursor = true,
+                    modemsg = true,
+                },
+            }
+        end,
+    },
+    {
         'sagmansercan/nvim-llama',
         event = 'VeryLazy',
         opts = {},
