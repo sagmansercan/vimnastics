@@ -7,10 +7,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         }
     end,
 })
-
-vim.cmd [[
-augroup jdtls_lsp
-    autocmd!
-    autocmd FileType java lua require'vimnastics.plugins.jdtls'.setup()
-augroup end
-]]

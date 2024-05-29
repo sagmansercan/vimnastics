@@ -47,8 +47,8 @@ return {
         vim.keymap.set('n', '<leader>drc', dap.repl.close, { desc = 'DAPrepl close' })
         vim.keymap.set('n', '<leader>drt', dap.repl.toggle, { desc = 'DAPrepl toggle' })
 
-        vim.keymap.set('n', '<leader>djts', require('jdtls').test_class, { desc = 'JDTLS: test class' })
-        vim.keymap.set('n', '<leader>djtn', require('jdtls').test_nearest_method, { desc = 'JDTLS: test nearest method' })
+        vim.keymap.set('n', '<leader>djtc', '<cmd>JavaTestDebugCurrentClass<CR>', { desc = 'nvim-java: test current class' })
+        vim.keymap.set('n', '<leader>djtm', '<cmd>JavaTestDebugCurrentMethod<CR>', { desc = 'nvim-java: test current method' })
 
         -- Dap UI setup
         -- For more information, see |:help nvim-dap-ui|

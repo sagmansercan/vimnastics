@@ -69,11 +69,6 @@ return {
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
                     end, '[T]oggle Inlay [H]ints')
                 end
-
-                if client.name == 'jdtls' then
-                    -- Telescope bug
-                    map('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', '[G]oto [D]efinition')
-                end
             end,
         })
 
@@ -116,6 +111,13 @@ return {
                         },
                     },
                 },
+            },
+            jdtls = {},
+        }
+
+        require('java').setup {
+            jdk = {
+                auto_install = false,
             },
         }
 
