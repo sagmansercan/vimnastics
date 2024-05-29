@@ -18,7 +18,8 @@ return {
             },
         }
 
-        vim.keymap.set('n', 'gr', '<cmd>Lspsaga finder<CR>', { desc = 'Lspsaga: def, ref, impl' })
+        vim.keymap.set('n', 'gr', '<cmd>Lspsaga finder ref<CR>', { desc = 'Lspsaga: references' })
+        vim.keymap.set('n', 'gi', '<cmd>Lspsaga finder imp<CR>', { desc = 'Lspsaga: references' })
         vim.keymap.set('n', 'gR', '<cmd>Lspsaga rename<CR>', { desc = 'Lspsaga: rename' })
         vim.keymap.set('n', '<leader>ds', '<cmd>Lspsaga outline<CR>', { desc = 'Lspsaga: outline' })
         vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = 'Lspsaga: code action' })
