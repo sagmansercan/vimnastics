@@ -61,6 +61,10 @@ require('lazy').setup({
     },
     require 'vimnastics.plugins.copilot',
     {
+        'mbbill/undotree',
+        event = 'VeryLazy',
+    },
+    {
         'sagmansercan/nvim-llama',
         event = 'VeryLazy',
         opts = {},
