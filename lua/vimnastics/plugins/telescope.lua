@@ -95,7 +95,7 @@ return {
                 line_width = 0.7,
             })
         end, { desc = 'Search Diagnostics' })
-        vim.keymap.set('n', '<leader>s', function()
+        vim.keymap.set('n', '<leader>ts', function()
             builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
                 -- winblend = 1,
                 previewer = false,
