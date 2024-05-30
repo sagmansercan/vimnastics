@@ -3,12 +3,12 @@ return {
     branch = 'dev', -- IMPORTANT!
     keys = {
         {
-            '<leader>xx',
+            '<leader>trw',
             '<cmd>Trouble diagnostics toggle<cr>',
             desc = 'Diagnostics (Trouble)',
         },
         {
-            '<leader>xX',
+            '<leader>trc',
             '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
             desc = 'Buffer Diagnostics (Trouble)',
         },
