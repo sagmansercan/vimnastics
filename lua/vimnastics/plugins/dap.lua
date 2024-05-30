@@ -50,6 +50,26 @@ return {
         vim.keymap.set('n', '<leader>djtc', '<cmd>JavaTestDebugCurrentClass<CR>', { desc = 'nvim-java: test current class' })
         vim.keymap.set('n', '<leader>djtm', '<cmd>JavaTestDebugCurrentMethod<CR>', { desc = 'nvim-java: test current method' })
 
+        dap.configurations.scala = {
+            {
+                type = 'scala',
+                request = 'launch',
+                name = 'RunOrTest',
+                metals = {
+                    runType = 'runOrTestFile',
+                    --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
+                },
+            },
+            {
+                type = 'scala',
+                request = 'launch',
+                name = 'Test Target',
+                metals = {
+                    runType = 'testTarget',
+                },
+            },
+        }
+
         -- Dap UI setup
         -- For more information, see |:help nvim-dap-ui|
         dapui.setup {
