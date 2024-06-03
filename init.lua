@@ -19,7 +19,11 @@ require('lazy').setup({
         'christoomey/vim-tmux-navigator',
         event = 'VeryLazy',
     },
-    -- { 'numToStr/Comment.nvim', opts = {} },
+    {
+        'numToStr/Comment.nvim',
+        event = 'VeryLazy',
+        opts = {},
+    },
     {
         'tpope/vim-fugitive',
         event = 'VeryLazy',
