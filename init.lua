@@ -140,6 +140,26 @@ require('lazy').setup({
         end,
     },
     {
+        'kristijanhusak/vim-dadbod-ui',
+        event = 'VeryLazy',
+        dependencies = {
+            { 'tpope/vim-dadbod' },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' } },
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+            vim.g.db_ui_winwidth = 60
+            -- vim.g.db_ui_disable_mappings = 1
+        end,
+    },
+    {
         'sagmansercan/nvim-llama',
         event = 'VeryLazy',
         opts = {},
