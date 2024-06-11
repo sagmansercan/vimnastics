@@ -41,7 +41,7 @@ return {
             defaults = {
                 file_ignore_patterns = {
                     '^.git/',
-                    '**/*.class', -- compiled java classes
+                    '**/*.class$', -- compiled java classes
                 },
                 mappings = {
                     i = {
@@ -52,6 +52,16 @@ return {
                         ['<C-k>'] = actions.move_selection_previous,
                     },
                 },
+                -- vimgrep_arguments = {
+                --     'rg',
+                --     '--color=never',
+                --     '--no-heading',
+                --     '--with-filename',
+                --     '--line-number',
+                --     '--column',
+                --     '--smart-case',
+                -- },
+                -- find_command = { 'fd', '--type', 'f', '--hidden', '--smart-case', '--unrestricted' },
             },
             pickers = {
                 find_files = {
