@@ -164,6 +164,11 @@ require('lazy').setup({
         event = 'VeryLazy',
         opts = {},
     },
+    {
+        "cappyzawa/trim.nvim",
+        event = "VeryLazy",
+        opts = {},
+    }
     -- { import = 'custom.plugins' },
 }, {
     defaults = {
