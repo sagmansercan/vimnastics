@@ -24,7 +24,10 @@ return {
     branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+        {
+            'nvim-tree/nvim-web-devicons',
+            enabled = vim.g.have_nerd_font
+        },
         {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make',
@@ -41,7 +44,11 @@ return {
             defaults = {
                 file_ignore_patterns = {
                     '^.git/',
-                    '**/*.class$', -- compiled java classes
+                    '**/*.class$',    -- compiled java classes
+                    '^build/',        -- gradle build
+                    '^target/',       -- maven target
+                    '^node_modules/', -- node modules
+                    '^venv/',         -- python virtualenv
                 },
                 mappings = {
                     i = {
@@ -73,9 +80,9 @@ return {
                     require('telescope.themes').get_dropdown(),
                 },
                 fzf = {
-                    fuzzy = true, -- false will only do exact matching
+                    fuzzy = true,                   -- false will only do exact matching
                     override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true, -- override the file sorter
+                    override_file_sorter = true,    -- override the file sorter
                     -- case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
                     -- the default case_mode is "smart_case"
                 },
@@ -91,7 +98,8 @@ return {
         vim.keymap.set('n', '<leader>tk', L.pick_vertical(builtin.keymaps), { desc = 'Search Keymaps' })
         vim.keymap.set('n', '<leader>f', L.pick_vertical(builtin.find_files), { desc = 'Search Files' })
         vim.keymap.set('n', '<leader>y', L.pick_vertical(builtin.live_grep), { desc = 'Search by Grep' })
-        vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles), { desc = 'Search Recent Files ("." for repeat)' })
+        vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles),
+            { desc = 'Search Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader><leader>', L.pick_vertical(builtin.buffers), { desc = '[ ] Find existing buffers' })
         vim.keymap.set('n', '<leader>td', function()
             -- custom opts
