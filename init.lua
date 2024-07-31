@@ -165,6 +165,11 @@ require('lazy').setup({
         opts = {},
     },
     {
+        'sagmansercan/nvim-popterm',
+        event = 'VeryLazy',
+        opts = {},
+    },
+    {
         "cappyzawa/trim.nvim",
         event = "VeryLazy",
         opts = {},

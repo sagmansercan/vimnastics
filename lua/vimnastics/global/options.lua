@@ -54,3 +54,5 @@ vim.keymap.set('n', '<leader>eb', '<cmd>Git blame<CR>', { desc = 'Open all lines
 vim.keymap.set('n', '<leader>er', '<cmd>GBrowse<CR>', { desc = 'Git browse' })
 vim.keymap.set('n', '<leader>ut', '<cmd>UndotreeToggle<CR>', { desc = 'Undo tree toggle' })
 vim.keymap.set('v', '<leader>ec', '<cmd>ExplainCode<CR>', { desc = 'Explain code via llama' })
+vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('t', '<C-t>', '<C-\\><C-n>:ToggleTerm<CR>', { desc = 'Toggle terminal in terminal mode' })
