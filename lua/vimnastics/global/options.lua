@@ -2,32 +2,42 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
+vim.opt.autoindent = true
 vim.opt.autoread = true
+vim.opt.autowrite = true
+vim.opt.backup = false
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.fileencoding = 'utf-8'
 vim.opt.foldmethod = 'indent'
-vim.opt.foldlevel = 4
+vim.opt.foldlevel = 99 -- no fold by default
+vim.opt.guicursor = ''
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = 'nosplit'
+vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 20
+vim.opt.showmatch = true
 vim.opt.showmode = false
 vim.opt.showtabline = 1
 vim.opt.signcolumn = 'yes'
 vim.opt.smartcase = true
+vim.opt.smartindent = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.updatetime = 250
+vim.opt.termguicolors = true
 vim.opt.timeoutlen = 1000
 vim.opt.wrap = true
+vim.opt.writebackup = false
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set({ 'i', 'n' }, '<C-s>', '<cmd>w<CR><ESC>', { desc = 'Save current buffer' })
