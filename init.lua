@@ -170,15 +170,18 @@ require('lazy').setup({
         opts = {},
     },
     {
-        "cappyzawa/trim.nvim",
-        event = "VeryLazy",
+        'cappyzawa/trim.nvim',
+        event = 'VeryLazy',
         opts = {},
     },
     {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
+        'iamcco/markdown-preview.nvim',
+        event = 'VeryLazy',
+        cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+        ft = { 'markdown' },
+        build = function()
+            vim.fn['mkdp#util#install']()
+        end,
     },
     -- { import = 'custom.plugins' },
 }, {
