@@ -5,14 +5,17 @@ return {
         ensure_installed = {
             'bash',
             'c',
-            'dap_repl',
+            -- 'dap_repl',
             'diff',
             'html',
+            'java',
             'lua',
-            'luadoc',
+            -- 'luadoc',
             'markdown',
+            'python',
             'vim',
-            'vimdoc',
+            -- 'vimdoc',
+            'yaml',
         },
         auto_install = true,
         highlight = {
@@ -20,9 +23,12 @@ return {
             -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
             --  If you are experiencing weird indenting issues, add the language to
             --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-            additional_vim_regex_highlighting = { 'ruby' },
+            -- additional_vim_regex_highlighting = { 'ruby' },
         },
-        indent = { enable = true, disable = { 'ruby' } },
+        indent = {
+            enable = true,
+            -- disable = { 'ruby' }
+        },
     },
     config = function(_, opts)
         require('nvim-treesitter.install').prefer_git = true
