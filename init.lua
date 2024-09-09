@@ -12,9 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    -- essential plugins may be required by various plugins
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-tree/nvim-web-devicons' },
+
+    -- visuals/color/themes etc.
     require 'vimnastics.plugins.tokyonight',
+    require 'vimnastics.plugins.lualine',
+
+    -- formatting/style/navigation/utilities
     {
         'tpope/vim-sleuth',
         event = 'VeryLazy',
@@ -23,27 +29,31 @@ require('lazy').setup({
         'christoomey/vim-tmux-navigator',
         event = 'VeryLazy',
     },
+    require 'vimnastics.plugins.autopairs',
+    require 'vimnastics.plugins.conform',
     -- {
     --     'numToStr/Comment.nvim',
     --     event = 'VeryLazy',
     --     opts = {},
     -- },
+
+    -- git
     {
         'tpope/vim-fugitive',
         event = 'VeryLazy',
         dependencies = { 'tpope/vim-rhubarb' }, -- GBrowse for GitHub
     },
-    -- require 'vimnastics.plugins.harpoon',
     require 'vimnastics.plugins.gitsigns',
-    require 'vimnastics.plugins.telescope',
-    require 'vimnastics.plugins.cmp',
+
+    -- here comes some serious stuff
+    require 'vimnastics.plugins.treesitter',
     require 'vimnastics.plugins.lsp',
+    require 'vimnastics.plugins.cmp',
+    require 'vimnastics.plugins.telescope',
+    -- require 'vimnastics.plugins.harpoon',
     -- require 'vimnastics.plugins.mini',
     -- require 'vimnastics.plugins.dap',
-    require 'vimnastics.plugins.treesitter',
-    require 'vimnastics.plugins.conform',
     -- require 'vimnastics.plugins.lint',
-    -- require 'vimnastics.plugins.autopairs',
     -- require 'vimnastics.plugins.neo-tree',
     -- require 'vimnastics.plugins.trouble',
     -- {
