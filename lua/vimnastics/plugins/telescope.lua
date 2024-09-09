@@ -40,14 +40,14 @@ return {
         --         local actions = require 'telescope.actions'
         require('telescope').setup {
             defaults = {
-                --                 file_ignore_patterns = {
-                --                     '^.git/',
-                --                     '**/*.class$',    -- compiled java classes
-                --                     '^build/',        -- gradle build
-                --                     '^target/',       -- maven target
-                --                     '^node_modules/', -- node modules
-                --                     '^venv/',         -- python virtualenv
-                --                 },
+                file_ignore_patterns = {
+                    '^.git/',
+                    '**/*.class$', -- compiled java classes
+                    '^build/', -- gradle build
+                    '^target/', -- maven target
+                    '^node_modules/', -- node modules
+                    '^venv/', -- python virtualenv
+                },
                 --                 mappings = {
                 --                     i = {
                 --                         ['<C-c>'] = actions.close,
