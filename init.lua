@@ -32,6 +32,7 @@ require('lazy').setup({
             }
         end,
     },
+    require 'vimnastics.plugins.notifications',
 
     -- formatting/style/navigation/utilities
     {
