@@ -18,7 +18,7 @@ return {
         -- -- require 'vimnastics.plugins.lspsaga',
     },
     config = function()
-        require 'lspconfig'.lua_ls.setup {
+        require('lspconfig').lua_ls.setup {
             -- on_init = function(client)
             --   local path = client.workspace_folders[1].name
             --   if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -48,13 +48,13 @@ return {
             settings = {
                 Lua = {
                     diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
-            }
+                        globals = { 'vim' },
+                    },
+                },
+            },
         }
 
-        require 'lspconfig'.pyright.setup {
+        require('lspconfig').pyright.setup {
             -- cmd = {...},
             -- filetypes = { ...},
             -- capabilities = {},
@@ -95,7 +95,7 @@ return {
         -- -data /path/to/data
 
         -- ]]
-        require 'lspconfig'.jdtls.setup {
+        require('lspconfig').jdtls.setup {
             cmd = {
                 'java',
                 '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -119,10 +119,10 @@ return {
             -- capabilities = {},
         }
 
-        vim.diagnostic.config({
+        vim.diagnostic.config {
             virtual_text = true,
             update_in_insert = true,
-        })
+        }
 
         local keymaps = require 'vimnastics.global.keymaps'
         keymaps.set_lsp_keymaps()

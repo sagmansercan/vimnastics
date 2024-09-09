@@ -10,7 +10,6 @@ vim.keymap.set('n', '<down>', '')
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right' })
 
-
 -- Cmd
 -- `C` is for Ctrl, but here all the keymaps are set according to Cmd key on Mac. So
 -- if a <C-key> combination is set here, it means it is also hexmapped in iterm2 config.
@@ -55,7 +54,6 @@ vim.keymap.set('n', '<C-y>', '<cmd>Telescope live_grep<CR>', { desc = 'Telescope
 -- Leader
 -- leader-a
 vim.keymap.set('n', '<leader>a', '<cmd>Telescope buffers<CR>', { desc = 'buffers' })
-
 
 -- vim.keymap.set('n', '<leader>bD', '<cmd>bd!<CR>', { desc = 'force delete current buffer' })
 -- vim.keymap.set('n', '<leader>be', '<cmd>%bd|e#|bd#<CR>', { desc = 'Delete all buffers except current' })

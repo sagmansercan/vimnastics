@@ -12,6 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    { 'nvim-lua/plenary.nvim' },
+    { 'nvim-tree/nvim-web-devicons' },
     require 'vimnastics.plugins.tokyonight',
     {
         'tpope/vim-sleuth',
@@ -47,7 +49,6 @@ require('lazy').setup({
     -- {
     --     'folke/todo-comments.nvim',
     --     event = 'VeryLazy',
-    --     dependencies = { 'nvim-lua/plenary.nvim' },
     --     opts = {
     --         signs = false,
     --     },
@@ -78,7 +79,6 @@ require('lazy').setup({
     --     'scalameta/nvim-metals',
     --     event = 'VeryLazy',
     --     dependencies = {
-    --         'nvim-lua/plenary.nvim',
     --         {
     --             'j-hui/fidget.nvim',
     --             opts = {},

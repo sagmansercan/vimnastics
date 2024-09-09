@@ -32,6 +32,5 @@ return {
     end,
     dependencies = {
         require 'vimnastics.plugins.treesitter',
-        'nvim-tree/nvim-web-devicons',
     },
 }
