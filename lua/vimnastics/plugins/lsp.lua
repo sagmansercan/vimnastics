@@ -103,6 +103,7 @@ return {
                 '-Declipse.product=org.eclipse.jdt.ls.core.product',
                 '-Dlog.level=ALL',
                 '-Xmx3G',
+                '-javaagent:/Users/sercan.sagman/.local/share/java/lombok.jar',
                 '--add-modules=ALL-SYSTEM',
                 '--add-opens',
                 'java.base/java.util=ALL-UNNAMED',
