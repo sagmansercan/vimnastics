@@ -41,7 +41,6 @@ return {
     -- dependencies = {
     --     'rcarriga/nvim-dap-ui',
     --     'nvim-neotest/nvim-nio',
-    --     'williamboman/mason.nvim',
     --     'jay-babu/mason-nvim-dap.nvim',
     --     'leoluz/nvim-dap-go',
     --     'LiadOz/nvim-dap-repl-highlights',
@@ -52,44 +51,10 @@ return {
         set_dap_config_python(dap)
         -- local dapui = require 'dapui'
 
-        -- require('mason-nvim-dap').setup {
-        --     -- Makes a best effort to setup the various debuggers with
-        --     -- reasonable debug configurations
-        --     automatic_installation = true,
-        --
-        --     -- You can provide additional configuration to the handlers,
-        --     -- see mason-nvim-dap README for more information
-        --     handlers = {},
-        --
-        --     -- You'll need to check that you have the required things installed
-        --     -- online, please don't ask me how to install them :)
-        --     ensure_installed = {
-        --         -- Update this to ensure that you have the debuggers for the langs you want
-        --         'delve',
-        --     },
-        -- }
-
         -- require('nvim-dap-repl-highlights').setup()
 
         -- -- Basic debugging keymaps, feel free to change to your liking!
         keymaps.set_dap_keymaps(dap)
-        -- vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-        -- vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
-        -- vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
-        -- vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'Debug: Step Out' })
-        -- vim.keymap.set('n', '<F8>', dap.close, { desc = 'Debug: Close' })
-        -- vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-        -- vim.keymap.set('n', '<leader>B', function()
-        --     dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-        -- end, { desc = 'Debug: Set Breakpoint' })
-        -- vim.keymap.set('n', '<leader>do', dapui.open, { desc = 'DAPUI open' })
-        -- vim.keymap.set('n', '<leader>dc', dapui.close, { desc = 'DAPUI Close' })
-        -- vim.keymap.set('n', '<leader>dro', dap.repl.open, { desc = 'DAPrepl open' })
-        -- vim.keymap.set('n', '<leader>drc', dap.repl.close, { desc = 'DAPrepl close' })
-        -- vim.keymap.set('n', '<leader>drt', dap.repl.toggle, { desc = 'DAPrepl toggle' })
-        --
-        -- vim.keymap.set('n', '<leader>djtc', '<cmd>JavaTestDebugCurrentClass<CR>', { desc = 'nvim-java: test current class' })
-        -- vim.keymap.set('n', '<leader>djtm', '<cmd>JavaTestDebugCurrentMethod<CR>', { desc = 'nvim-java: test current method' })
 
         -- dap.configurations.scala = {
         --     {
