@@ -106,11 +106,11 @@ require('lazy').setup({
     --         -- vim.g.db_ui_disable_mappings = 1
     --     end,
     -- },
-    -- {
-    --     'sagmansercan/nvim-popterm',
-    --     event = 'VeryLazy',
-    --     opts = {},
-    -- },
+    {
+        'sagmansercan/nvim-popterm',
+        event = 'VeryLazy',
+        opts = {},
+    },
     -- {
     --     'cappyzawa/trim.nvim',
     --     event = 'VeryLazy',

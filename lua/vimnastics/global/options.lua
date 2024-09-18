@@ -9,7 +9,7 @@ vim.opt.inccommand = 'nosplit'
 vim.opt.number = true
 vim.opt.relativenumber = true
 -- vim.opt.scrolloff = 20
--- vim.opt.showmode = false
+vim.opt.showmode = false
 -- vim.opt.showtabline = 1
 vim.opt.signcolumn = 'yes'
 -- vim.opt.splitbelow = true
@@ -20,10 +20,11 @@ vim.opt.termguicolors = true
 
 -- indent/spaces
 -- vim.opt.autoindent = true
--- vim.opt.expandtab = true
--- vim.opt.shiftwidth = 4
--- vim.opt.smartindent = true
--- vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 
 -- file/read/write
 -- vim.opt.autoread = true
@@ -40,10 +41,10 @@ vim.opt.foldlevel = 99 -- no fold by default
 
 -- search
 -- vim.opt.hlsearch = true
--- vim.opt.ignorecase = true
+vim.opt.ignorecase = true
 -- vim.opt.incsearch = true
 -- vim.opt.showmatch = true
--- vim.opt.smartcase = true
+vim.opt.smartcase = true
 
 -- shortcuts
 -- vim.opt.list = true

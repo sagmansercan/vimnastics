@@ -65,7 +65,7 @@ return {
                         diagnosticMode = 'openFilesOnly',
                         typeCheckingMode = 'standard',
                         diagnosticSeverityOverrides = {
-                            -- reportArgumentType = 'warning',
+                            reportArgumentType = 'warning',
                             -- reportMissingImports = 'error',
                             -- reportUnknownVariableType = 'none', -- there are too much usage of Union in python
                             -- reportUnusedImport = 'warning',

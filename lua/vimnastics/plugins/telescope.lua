@@ -87,40 +87,36 @@ return {
             --             },
         }
         --
-        -- pcall(require('telescope').load_extension, 'fzf')
-        --         pcall(require('telescope').load_extension, 'ui-select')
-        --         pcall(require('telescope').load_extension, 'dap')
-        --
-        --         local builtin = require 'telescope.builtin'
-        --         vim.keymap.set('n', '<leader>th', L.pick_vertical(builtin.help_tags), { desc = 'Search Help' })
-        --         vim.keymap.set('n', '<leader>tk', L.pick_vertical(builtin.keymaps), { desc = 'Search Keymaps' })
-        --         vim.keymap.set('n', '<leader>f', L.pick_vertical(builtin.find_files), { desc = 'Search Files' })
-        --         vim.keymap.set('n', '<leader>y', L.pick_vertical(builtin.live_grep), { desc = 'Search by Grep' })
-        --         vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles),
-        --             { desc = 'Search Recent Files ("." for repeat)' })
-        --         vim.keymap.set('n', '<leader><leader>', L.pick_vertical(builtin.buffers), { desc = '[ ] Find existing buffers' })
-        --         vim.keymap.set('n', '<leader>td', function()
-        --             -- custom opts
-        --             builtin.diagnostics(require('telescope.themes').get_ivy {
-        --                 previewer = false,
-        --                 layout_config = {
-        --                     -- width = 0.7,
-        --                     height = 0.6,
-        --                 },
-        --                 sorting_strategy = 'ascending',
-        --                 line_width = 0.7,
-        --             })
-        --         end, { desc = 'Search Diagnostics' })
-        --         vim.keymap.set('n', '<leader>ts', function()
-        --             builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        --                 -- winblend = 1,
-        --                 previewer = false,
-        --                 layout_config = {
-        --                     width = 0.7,
-        --                 },
-        --                 sorting_strategy = 'descending',
-        --             })
-        --         end, { desc = 'Fuzzily search in current buffer' })
+        -- local builtin = require 'telescope.builtin'
+        -- vim.keymap.set('n', '<leader>th', L.pick_vertical(builtin.help_tags), { desc = 'Search Help' })
+        -- vim.keymap.set('n', '<leader>tk', L.pick_vertical(builtin.keymaps), { desc = 'Search Keymaps' })
+        -- vim.keymap.set('n', '<leader>f', L.pick_vertical(builtin.find_files), { desc = 'Search Files' })
+        -- vim.keymap.set('n', '<leader>y', L.pick_vertical(builtin.live_grep), { desc = 'Search by Grep' })
+        -- vim.keymap.set('n', '<leader>o', L.pick_vertical(builtin.oldfiles), { desc = 'Search Recent Files ("." for repeat)' })
+        -- vim.keymap.set('n', '<leader><leader>', L.pick_vertical(builtin.buffers), { desc = '[ ] Find existing buffers' })
+        -- vim.keymap.set('n', '<leader>td', function()
+        --     -- custom opts
+        --     builtin.diagnostics(require('telescope.themes').get_ivy {
+        --         previewer = false,
+        --         layout_config = {
+        --             -- width = 0.7,
+        --             height = 0.6,
+        --         },
+        --         sorting_strategy = 'ascending',
+        --         line_width = 0.7,
+        --     })
+        -- end, { desc = 'Search Diagnostics' })
+        -- vim.keymap.set('n', '<leader>ts', function()
+        --     builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        --         -- winblend = 1,
+        --         previewer = false,
+        --         layout_config = {
+        --             width = 0.7,
+        --         },
+        --         sorting_strategy = 'descending',
+        --     })
+        -- end, { desc = 'Fuzzily search in current buffer' })
+        keymaps.set_telescope_keymaps(M)
     end,
 }
 

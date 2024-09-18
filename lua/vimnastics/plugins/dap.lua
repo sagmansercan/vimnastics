@@ -48,6 +48,7 @@ return {
     -- },
     config = function()
         local dap = require 'dap'
+        local keymaps = require 'vimnastics.global.keymaps'
         set_dap_config_python(dap)
         -- local dapui = require 'dapui'
 
@@ -71,6 +72,7 @@ return {
         -- require('nvim-dap-repl-highlights').setup()
 
         -- -- Basic debugging keymaps, feel free to change to your liking!
+        keymaps.set_dap_keymaps(dap)
         -- vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
         -- vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
         -- vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })

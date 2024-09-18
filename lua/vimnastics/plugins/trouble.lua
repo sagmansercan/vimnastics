@@ -35,4 +35,14 @@ return {
     --     },
     -- },
     opts = {}, -- for default options, refer to the configuration section for custom setup.
+    config = function()
+        local trouble = require 'trouble'
+        trouble.setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+        local keymaps = require 'vimnastics.global.keymaps'
+        keymaps.set_trouble_keymaps(trouble)
+    end,
 }
