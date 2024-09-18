@@ -103,22 +103,88 @@ return {
                 '-Declipse.product=org.eclipse.jdt.ls.core.product',
                 '-Dlog.level=ALL',
                 '-Xmx3G',
-                '-javaagent:/Users/sercan.sagman/.local/share/java/lombok.jar',
+                '-javaagent:' .. vim.fn.expand '~/.local/share/java/lombok.jar',
                 '--add-modules=ALL-SYSTEM',
-                '--add-opens',
-                'java.base/java.util=ALL-UNNAMED',
-                '--add-opens',
-                'java.base/java.lang=ALL-UNNAMED',
+                '--add-opens=java.base/java.lang=ALL-UNNAMED',
+                '--add-opens=java.base/java.lang.invoke=ALL-UNNAMED',
+                '--add-opens=java.base/java.lang.reflect=ALL-UNNAMED',
+                '--add-opens=java.base/java.io=ALL-UNNAMED',
+                '--add-opens=java.base/java.net=ALL-UNNAMED',
+                '--add-opens=java.base/java.nio=ALL-UNNAMED',
+                '--add-opens=java.base/java.util=ALL-UNNAMED',
+                '--add-opens=java.base/java.util.concurrent=ALL-UNNAMED',
+                '--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED',
+                '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED',
+                '--add-opens=java.base/sun.nio.cs=ALL-UNNAMED',
+                '--add-opens=java.base/sun.security.action=ALL-UNNAMED',
+                '--add-opens=java.base/sun.util.calendar=ALL-UNNAMED',
+                '--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED',
                 '-jar',
-                '/Users/sercan.sagman/source/opensource/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+                vim.fn.expand '~/source/opensource/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
                 '-configuration',
-                '/Users/sercan.sagman/source/opensource/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac_arm',
+                vim.fn.expand '~/source/opensource/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac_arm',
                 '-data',
-                '/Users/sercan.sagman/.local/share/jdtls-workspaces/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'),
+                vim.fn.expand '~/.local/share/jdtls-workspaces/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t'),
+            },
+            settings = {
+                java = {
+                    references = {
+                        includeDecompiledSources = true,
+                    },
+                    maven = {
+                        downloadSources = true,
+                    },
+                    signatureHelp = { enabled = true },
+                    contentProvider = { preferred = 'fernflower' },
+                    completion = {
+                        favoriteStaticMembers = {
+                            'org.hamcrest.MatcherAssert.assertThat',
+                            'org.hamcrest.Matchers.*',
+                            'org.hamcrest.CoreMatchers.*',
+                            'org.junit.jupiter.api.Assertions.*',
+                            'java.util.Objects.requireNonNull',
+                            'java.util.Objects.requireNonNullElse',
+                            'org.mockito.Mockito.*',
+                        },
+                        filteredTypes = {
+                            'com.sun.*',
+                            'io.micrometer.shaded.*',
+                            'java.awt.*',
+                            'jdk.*',
+                            'sun.*',
+                        },
+                    },
+                    format = {
+                        enabled = true,
+                        -- settings = {
+                        --     url = 'https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml',
+                        -- },
+                    },
+                    -- signatureHelp = {
+                    --     enabled = true,
+                    -- },
+                },
             },
             -- filetypes = { 'java' },
             -- capabilities = {},
+            -- init_options = {
+            --     bundles = {
+            --         '/Users/sercan.sagman/source/opensource/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar',
+            --     },
+            -- },
         }
+
+        require('lspconfig').bashls.setup {
+            filetypes = { 'sh', 'bash', 'zsh' },
+            single_file_support = true,
+            root_dir = require('lspconfig/util').root_pattern('.git', '.bashrc', '.zshrc', '.bash_profile', '.bash_login', '.profile') or vim.fn.getcwd(),
+        }
+
+        require('lspconfig').gopls.setup {}
+
+        require('lspconfig').clangd.setup {}
+
+        require('lspconfig').rust_analyzer.setup {}
 
         vim.diagnostic.config {
             virtual_text = true,
