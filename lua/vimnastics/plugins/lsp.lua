@@ -142,7 +142,7 @@ return {
             -- capabilities = {},
             -- init_options = {
             --     bundles = {
-            --         '/Users/sercan.sagman/source/opensource/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar',
+            --         vim.fn.expand '~/source/opensource/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.0.jar',
             --     },
             -- },
         }
