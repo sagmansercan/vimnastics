@@ -2,6 +2,8 @@
 
 Launch point: [kickstart](https://github.com/nvim-lua/kickstart.nvim)
 
+⚠️  Please do not use this repository as is. It is a work in progress and will be updated frequently, may contain bugs and break your setup. ⚠️
+
 ---
 
 ## backup
