@@ -16,6 +16,9 @@ vim.keymap.set('v', '<', '<gv', { desc = 'Indent left' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right' })
 
 -- Multiple key strokes
+-- Letters
+vim.keymap.set('i', 'jj', '<C-c>', { desc = 'Exit insert mode' })
+vim.keymap.set('i', 'kk', '<C-c>', { desc = 'Exit insert mode' })
 -- Cmd
 -- `C` is for Ctrl, but here all the keymaps are set according to Cmd key on Mac. So
 -- if a <C-key> combination is set here, it means it is also hexmapped in iterm2 config.
