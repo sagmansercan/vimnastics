@@ -63,7 +63,7 @@ return {
                 },
                 documentation = {
                     max_width = 150,
-                    max_height = 5,
+                    max_height = 50,
                 },
             },
         }
