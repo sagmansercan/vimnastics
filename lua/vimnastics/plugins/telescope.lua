@@ -60,11 +60,25 @@ return {
                 },
                 find_command = { 'fd', '--type', 'f', '--hidden', '--smart-case', '--unrestricted' },
             },
-            --             pickers = {
-            --                 find_files = {
-            --                     hidden = true,
-            --                 },
-            --             },
+            pickers = {
+                find_files = {
+                    -- hidden = true,
+                    layout_strategy = 'vertical',
+                },
+                buffers = {
+                    layout_strategy = 'center',
+                    previewer = false,
+                    theme = 'cursor',
+                    layout_config = {
+                        width = 0.4,
+                    },
+                },
+                current_buffer_fuzzy_find = {
+                    layout_strategy = 'center',
+                    previewer = false,
+                    theme = 'ivy',
+                },
+            },
             extensions = {
                 file_browser = {
                     path = vim.loop.cwd(),
