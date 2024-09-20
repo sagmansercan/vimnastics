@@ -35,15 +35,10 @@ return {
 
                         for _, v in pairs(diagnostics_table) do
                             if v.severity == vim.diagnostic.severity.ERROR then
-                                -- return { fg = '#000000', bg = '#ff0000' }
                                 return { bg = '#ffffff' }
                             end
                         end
                         return { bg = '#000000' }
-                        -- return {
-                        --     -- fg = diagnostic_count > 0 and '#ffffff' or '#000000',
-                        --     -- bg = diagnostic_count > 0 and '#aa3355' or '#228855',
-                        -- }
                     end,
                 },
             },
@@ -67,9 +62,9 @@ return {
                         newfile = '[New]', -- Text to show for newly created file before first write
                     },
                     color = function(_)
-                        return { fg = vim.bo.modified and '#000000' or '#000000', bg = vim.bo.modified and '#903f00' or '#1f7047' }
+                        return { fg = vim.bo.modified and '#ffffff' or '#ffffff', bg = vim.bo.modified and '#903f00' or '#071a10' }
                     end,
-                    padding = 100,
+                    padding = 90,
                     icon = '📁',
                 },
             },
