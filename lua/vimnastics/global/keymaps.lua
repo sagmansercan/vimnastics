@@ -253,7 +253,11 @@ local cmd_keys_mappings = {
     {
         key = '<C-f>',
         map = {
-            { mode = 'n', action = '/', opts = { desc = 'Search text in current buffer', silent = false } },
+            {
+                mode = 'n',
+                action = '<cmd>Telescope find_files<CR>',
+                opts = { desc = 'Telescope find files' },
+            },
         },
     },
     {
@@ -383,8 +387,32 @@ local leader_keys_mappings = {
         plugin = 'trouble',
     },
     -- leader-e
-    -- leader-f
-    -- leader-g
+    {
+        key = '<leader>f',
+        map = {
+            { mode = 'n', action = '/', opts = { desc = 'Search text in current buffer', silent = false } },
+        },
+    },
+    -- leader-g → Git
+    {
+        key = '<leader>gb',
+        map = {
+            { mode = 'n', action = '<cmd>Git blame<CR>', opts = { desc = 'Git blame' } },
+        },
+    },
+    {
+        key = '<leader>gd',
+        map = {
+            { mode = 'n', action = '<cmd>Gvdiffsplit<CR>', opts = { desc = 'Git diff origin' } },
+        },
+    },
+    {
+        key = '<leader>go',
+        map = {
+            { mode = 'n', action = '<cmd>GBrowse<CR>', opts = { desc = 'Open current file on browser' } },
+            { mode = 'v', action = "<cmd>'<,'>GBrowse<CR>", opts = { desc = 'Open current selection on browser' } },
+        },
+    },
     -- leader-h
     -- leader-i
     -- leader-j
