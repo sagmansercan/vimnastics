@@ -59,25 +59,19 @@ return {
                     '--smart-case',
                 },
                 find_command = { 'fd', '--type', 'f', '--hidden', '--smart-case', '--unrestricted' },
+                layout_strategy = 'vertical',
             },
             pickers = {
-                find_files = {
-                    -- hidden = true,
-                    layout_strategy = 'vertical',
-                },
+                find_files = {},
                 buffers = {
-                    layout_strategy = 'center',
                     previewer = false,
-                    theme = 'cursor',
-                    layout_config = {
-                        width = 0.4,
-                    },
                 },
                 current_buffer_fuzzy_find = {
-                    layout_strategy = 'center',
                     previewer = false,
-                    theme = 'ivy',
                 },
+                live_grep = {},
+                lsp_implementations = {},
+                lsp_references = {},
             },
             extensions = {
                 file_browser = {
