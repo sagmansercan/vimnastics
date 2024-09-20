@@ -6,7 +6,8 @@ return {
     config = function()
         local trouble = require 'trouble'
         trouble.setup {}
+
         local keymaps = require 'vimnastics.global.keymaps'
-        keymaps.set_trouble_keymaps(trouble)
+        keymaps.set_trouble_keymaps()
     end,
 }

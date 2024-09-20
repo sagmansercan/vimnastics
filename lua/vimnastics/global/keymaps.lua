@@ -1,166 +1,723 @@
 M = {}
--- Single strokes
--- ESC -> no highlight
-vim.keymap.set('n', '<Esc>', '<C-c><cmd>nohl<CR>', { desc = 'write file' })
-vim.keymap.set('n', '<F1>', '<cmd>ToggleTerm<CR>', { desc = 'write file' })
-vim.keymap.set('t', '<F1>', '<C-\\><C-n>:ToggleTerm<CR>', { desc = 'Toggle terminal in terminal mode' })
 
--- arrow keys -> disable navigation via arrow keys in normal mode
-vim.keymap.set('n', '<left>', '')
-vim.keymap.set('n', '<right>', '')
-vim.keymap.set('n', '<up>', '')
-vim.keymap.set('n', '<down>', '')
-
--- <, > -> continous indenting
-vim.keymap.set('v', '<', '<gv', { desc = 'Indent left' })
-vim.keymap.set('v', '>', '>gv', { desc = 'Indent right' })
-
--- Multiple key strokes
--- Letters
-vim.keymap.set('i', 'jj', '<C-c>', { desc = 'Exit insert mode' })
-vim.keymap.set('i', 'kk', '<C-c>', { desc = 'Exit insert mode' })
--- Cmd
--- `C` is for Ctrl, but here all the keymaps are set according to Cmd key on Mac. So
--- if a <C-key> combination is set here, it means it is also hexmapped in iterm2 config.
--- C-a -> reserved for tmux prefix
--- C-b -> Buffers, see set_telescope_keymaps // default: scroll back one full screen
--- C-c -> this one can be a little tricky because it is exiting from insert mode and likely to be excesivvely pressed
--- right after switching into the normal mode(C-c C-c C-c ...)
--- So, it may be better to use this like 'safe and repeatable operations'. I prefer not using it
--- C-e -> select all
-vim.keymap.set('n', '<C-e>', 'ggVG', { desc = 'Select all' })
-vim.keymap.set('v', '<C-e>', '<C-c>ggVG', { desc = 'Select all' })
--- C-f -> Find files, see set_telescope_keymaps // default: scroll forward one full screen
--- C-g -> git files, see set_telescope_keymaps
--- C-i -> builtin: go to next cursor position
--- C-hjlk -> window navigation inside neovim
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
--- C-m -> builtin: Enter. DO NOT CONFIGURE
--- C-n -> builtin: next line same column. C-n and C-p are convenient for moving cursor up and down in many cases
--- C-p -> builtin: previous line same column. Optionally configurable
--- C-r -> builtin: redo
--- C-s -> Save changes
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Save changes' })
-vim.keymap.set('i', '<C-s>', '<C-c><cmd>w<CR>', { desc = 'Save changes' })
--- C+t -> builtin in tagstack ops (?)
--- C+u -> builtin page navigation. Works well with C+d
--- C+v -> builtin paste. Equivalent to `p`, reconfigurable
--- C+w -> reserved in terminal to close iterm2
--- C-x -> Close buffer
-vim.keymap.set('n', '<C-x>', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
--- vim.keymap.set('n', '<C-y><C-x>', '<cmd>bdelete!<CR>', { desc = 'Close buffer ignore changes' })
--- C+y -> Live grep, see set_telescope_keymaps // builtin move screen one line up.
--- C+z -> reserved in terminal to suspend neovim process and go back to shell which current neovim instance is opened
-
--- Leader
--- leader-a
--- leader-b
--- leader-c
--- leader-d
--- leader-e
--- leader-f
-vim.keymap.set('n', '<leader>s', '/', { desc = 'Search in buffer' })
--- leader-n -> Next buffer
-vim.keymap.set('n', '<leader>n', '<cmd>bn<CR>', { desc = 'Next buffer' })
--- leader-p -> Previous buffer
-vim.keymap.set('n', '<leader>p', '<cmd>bp<CR>', { desc = 'Previous buffer' })
--- leader-q
-vim.keymap.set('n', '<leader>qA', '<cmd>qa!<CR>', { desc = 'Abort changes and Quit Nvim' })
-vim.keymap.set('n', '<leader>qa', '<cmd>qa<CR>', { desc = 'Quit Nvim' })
--- leader-w
--- vim.keymap.set('n', '<leader>wa', '<cmd>qa!<CR>', { desc = 'Abort Changes and Quit Nvim' })
-vim.keymap.set('n', '<leader>we', '<cmd>%bd|e#|bd#<CR>', { desc = 'Delete all buffers except current' })
--- vim.keymap.set('n', '<leader>wQ', '<cmd>wq<CR>', { desc = 'Save and Quit Nvim' })
-vim.keymap.set('n', '<leader>ww', '<cmd>bd<CR>', { desc = 'Delete buffer' })
-vim.keymap.set('n', '<leader>wW', '<cmd>bd!<CR>', { desc = 'Abort Changes and Delete buffer' })
--- vim.keymap.set('n', '<leader>bD', '<cmd>bd!<CR>', { desc = 'force delete current buffer' })
--- vim.keymap.set('n', '<leader>be', '<cmd>%bd|e#|bd#<CR>', { desc = 'Delete all buffers except current' })
--- vim.keymap.set('n', '<leader>w', '<cmd>:q<CR>', { desc = 'Quit' })
--- vim.keymap.set('n', '<leader>q', '<cmd>:qa<CR>', { desc = 'Quit' })
--- vim.keymap.set('n', '<leader>s', '/', { desc = 'Search raw' })
--- vim.keymap.set('n', '<leader>n', '/<C-r>+<CR>', { desc = 'Search text from clipboard' })
--- vim.keymap.set('n', '-', '*', { desc = 'Search current word' })
--- vim.keymap.set('v', '<leader>n', 'y/<C-r>"<CR>', { desc = 'Search current word' })
--- vim.keymap.set('n', '<leader>gl', '<cmd>Glow<CR>', { desc = 'Glow markdown' })
--- vim.keymap.set('n', '<leader>eb', '<cmd>Git blame<CR>', { desc = 'Open all lines git blame' })
--- vim.keymap.set('n', '<leader>er', '<cmd>GBrowse<CR>', { desc = 'Git browse' })
--- vim.keymap.set('n', '<leader>ut', '<cmd>UndotreeToggle<CR>', { desc = 'Undo tree toggle' })
--- vim.keymap.set('v', '<leader>ec', '<cmd>ExplainCode<CR>', { desc = 'Explain code via llama' })
--- vim.keymap.set('n', '<F1>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
--- vim.keymap.set('t', '<F1>', '<C-\\><C-n>:ToggleTerm<CR>', { desc = 'Toggle terminal in terminal mode' })
-
---define a function to set keymaps for a plugin
-M.set_lsp_keymaps = function()
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = 'Go to definition' })
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = 'Go to declaration' })
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = 'Go to references' })
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = 'Go to implementation' })
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { desc = 'Show hover' })
-    vim.keymap.set('n', 'gR', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = 'Rename' })
+local function set_keymap(mode, key, action, opts)
+    vim.api.nvim_set_keymap(mode, key, action, opts)
 end
 
-M.set_cmp_keymaps = function(cmp)
-    return cmp.mapping.preset.insert {
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-y>'] = cmp.mapping.confirm { select = true },
-        ['<C-g>'] = cmp.mapping.complete {},
-        -- ['<C-l>'] = cmp.mapping(function()
-        --     if luasnip.expand_or_locally_jumpable() then
-        --         luasnip.expand_or_jump()
-        --     end
-        -- end, { 'i', 's' }),
-        -- ['<C-h>'] = cmp.mapping(function()
-        --     if luasnip.locally_jumpable(-1) then
-        --         luasnip.jump(-1)
-        --     end
-        -- end, { 'i', 's' }),
-    }
-end
+-- local map_opts = { noremap = true, silent = true }
+local map_opts = { noremap = true, silent = true }
 
-M.set_telescope_keymaps = function(telescope_custom_functions)
-    -- Cmd
-    vim.keymap.set('n', '<C-b>', '<cmd>Telescope buffers layout_strategy=center<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<C-f>', '<cmd>Telescope find_files layout_strategy=vertical<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<C-g>', '<cmd>Telescope git_files layout_strategy=vertical<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<C-y>', telescope_custom_functions.pick_vertical(require('telescope.builtin').live_grep), { desc = 'Telescope Live Grep' })
+local only_letter_mappings = {
+    -- → Letters are all(a-z, A-Z) reserved for normal mode, so do not use them in normal mode except for special cases like g and K
+    -- → Numbers are all(0-9) reserved for normal mode, so do not use them
 
+    -- Easy exit from insert mode - [experimental]
+    {
+        key = 'jj',
+        map = {
+            { mode = 'i', action = '<C-c>', opts = { desc = 'Exit insert mode' } },
+        },
+    },
+    {
+        key = 'kk',
+        map = {
+            { mode = 'i', action = '<C-c>', opts = { desc = 'Exit insert mode' } },
+        },
+    },
+
+    -- LSP
+    {
+        key = 'gd',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.definition()<CR>', opts = { desc = 'Go to definition' } },
+        },
+        plugin = 'lspconfig',
+    },
+    {
+        key = 'gD',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.declaration()<CR>', opts = { desc = 'Go to declaration' } },
+        },
+        plugin = 'lspconfig',
+    },
+    {
+        key = 'gr',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.references()<CR>', opts = { desc = 'Go to references' } },
+        },
+        plugin = 'lspconfig',
+    },
+    {
+        key = 'gi',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.implementation()<CR>', opts = { desc = 'Go to implementation' } },
+        },
+        plugin = 'lspconfig',
+    },
+    {
+        key = 'K',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.hover()<CR>', opts = { desc = 'Show hover' } },
+        },
+        plugin = 'lspconfig',
+    },
+    {
+        key = 'gR',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.rename()<CR>', opts = { desc = 'Rename' } },
+        },
+        plugin = 'lspconfig',
+    },
+    {
+        key = 'gC',
+        map = {
+            { mode = 'n', action = '<cmd>lua vim.lsp.buf.code_action()<CR>', opts = { desc = 'Code action' } },
+        },
+        plugin = 'lspconfig',
+    },
+}
+local special_keys_mappings = {
+    {
+        key = '<ESC>',
+        map = {
+            { mode = 'n', action = '<C-c><cmd>nohl<CR>', opts = { desc = 'Clear search highlight' } },
+            { mode = 't', action = '<C-\\><C-n>', opts = { desc = 'Exit terminal mode' } },
+        },
+    },
+
+    -- Arrow keys → Disable navigation via arrow keys in normal mode, use `hjkl` instead
+    {
+        key = '<left>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+    {
+        key = '<right>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+    {
+        key = '<up>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+    {
+        key = '<down>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+
+    -- `<` and `>` -> continous indenting
+    {
+        key = '<',
+        map = {
+            { mode = 'v', action = '<gv', opts = { desc = 'Indent left' } },
+        },
+    },
+    {
+        key = '>',
+        map = {
+            { mode = 'v', action = '>gv', opts = { desc = 'Indent right' } },
+        },
+    },
+
+    -- Arrow keys → Disable navigation via arrow keys in normal mode, use `hjkl` instead
+    {
+        key = '<left>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+    {
+        key = '<right>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+    {
+        key = '<up>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+    {
+        key = '<down>',
+        map = {
+            { mode = 'n', action = '', opts = { desc = 'Disable navigation via arrow keys' } },
+        },
+    },
+
+    -- `<` and `>` -> continous indenting
+    {
+        key = '<',
+        map = {
+            { mode = 'v', action = '<gv', opts = { desc = 'Indent left' } },
+        },
+    },
+    {
+        key = '>',
+        map = {
+            { mode = 'v', action = '>gv', opts = { desc = 'Indent right' } },
+        },
+    },
+}
+local function_keys_mappings = {
+    -- Function keys
+    {
+        key = '<F1>',
+        map = {
+            { mode = 'n', action = '<cmd>ToggleTerm<CR>', opts = { desc = 'Toggle terminal' } },
+            { mode = 't', action = '<C-\\><C-n>:ToggleTerm<CR>', opts = { desc = 'Toggle terminal in terminal mode' } },
+        },
+    },
+    -- F2 →
+    -- F3 →
+    -- F4 →
+    {
+        key = '<F5>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").continue()<CR>', opts = { desc = 'Debug: Start/Continue' } },
+        },
+    },
+    {
+        key = '<F6>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").close()<CR>', opts = { desc = 'Debug: Close' } },
+        },
+    },
+    {
+        key = '<F7>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").toggle_breakpoint()<CR>', opts = { desc = 'Debug: Toggle Breakpoint' } },
+        },
+    },
+    {
+        key = '<F8>',
+        map = {
+            {
+                mode = 'n',
+                action = "<cmd>lua require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')<CR>",
+                opts = { desc = 'Debug: Conditional Breakpoint' },
+            },
+        },
+    },
+    {
+        key = '<F9>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").repl.toggle()<CR>', opts = { desc = 'Debug: REPL toggle' } },
+        },
+    },
+    {
+        key = '<F10>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").step_over()<CR>', opts = { desc = 'Debug: Step Over' } },
+        },
+    },
+    {
+        key = '<F11>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").step_into()<CR>', opts = { desc = 'Debug: Step Into' } },
+        },
+    },
+    {
+        key = '<F12>',
+        map = {
+            { mode = 'n', action = '<cmd>lua require("dap").step_out()<CR>', opts = { desc = 'Debug: Step Out' } },
+        },
+    },
+}
+local cmd_keys_mappings = {
+    -- Cmd(Ctrl)
+    -- `C` is for Ctrl, but here all the keymaps are set according to Cmd key on Mac. Hexapped in iterm2 config.
+    -- C-a → reserved for tmux prefix
+    {
+        key = '<C-b>',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope buffers<CR>', opts = { desc = 'Buffers' } },
+        },
+        plugin = 'telescope',
+    },
+    -- C-c → reserved for canceling operations
+    -- C-d → reserved for scrolling down
+    {
+        key = '<C-e>',
+        map = {
+            { mode = 'n', action = 'ggVG', opts = { desc = 'Select all' } },
+            { mode = 'v', action = '<C-c>ggVG', opts = { desc = 'Select all' } },
+        },
+    },
+    {
+        key = '<C-f>',
+        map = {
+            { mode = 'n', action = '/', opts = { desc = 'Search text in current buffer', silent = false } },
+        },
+    },
+    {
+        key = '<C-g>',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope git_files<CR>', opts = { desc = 'Git files' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<C-g>',
+        map = {
+            {
+                mode = 'i',
+                action = function()
+                    return require('cmp').mapping.complete()
+                end,
+                opts = { desc = 'Trigger completion' },
+            },
+        },
+        plugin = 'cmp',
+    },
+    -- C-h → reserved for window/tmux navigation
+    -- C-i → reserved for navigating to next cursor position
+    -- C-j → reserved for window/tmux navigation
+    -- C-k → reserved for window/tmux navigation
+    -- C-l → reserved for window/tmux navigation
+    -- C-m → reserved for Enter
+    {
+        key = '<C-n>',
+        map = {
+            { mode = 'n', action = '<cmd>bn<CR>', opts = { desc = 'Next buffer' } },
+        },
+    },
+    {
+        key = '<C-n>',
+        map = {
+            {
+                mode = 'i',
+                action = function()
+                    return require('cmp').mapping.select_next_item()
+                end,
+                opts = { desc = 'Completion select next item' },
+            },
+        },
+        plugin = 'cmp',
+    },
+    -- C-o → reserved for jumping back and forth in navigation history
+    {
+        key = '<C-p>',
+        map = {
+            { mode = 'n', action = '<cmd>bp<CR>', opts = { desc = 'Previous buffer' } },
+        },
+    },
+    {
+        key = '<C-p>',
+        map = {
+            {
+                mode = 'i',
+                action = function()
+                    return require('cmp').mapping.select_previous_item
+                end,
+                opts = { desc = 'Completion select previous item' },
+            },
+        },
+        plugin = 'cmp',
+    },
+    -- C-q → reserved for quitting
+    -- C-r → reserved for redo
+    {
+        key = '<C-s>',
+        map = {
+            { mode = 'n', action = '<cmd>w<CR>', opts = { desc = 'Save changes' } },
+            { mode = 'i', action = '<C-c><cmd>w<CR>', opts = { desc = 'Save changes' } },
+        },
+    },
+    -- C-t → reserved for tagstack operations
+    -- C-u → reserved for page navigation
+    -- C-v → reserved for paste
+    -- C-w → reserved for closing windows
+    {
+        key = '<C-x>',
+        map = {
+            { mode = 'n', action = '<cmd>bdelete<CR>', opts = { desc = 'Close buffer' } },
+        },
+    },
+    {
+        key = '<C-y>',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope live_grep<CR>', opts = { desc = 'Live grep' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<C-y>',
+        map = {
+            {
+                mode = 'i',
+                action = function()
+                    return require('cmp').mapping.confirm { select = true }
+                end,
+                opts = { desc = 'Completion selection' },
+            },
+        },
+        plugin = 'cmp',
+    },
+    -- C-z → reserved for suspending neovim process and go back to shell which current neovim instance is opened
+}
+local leader_keys_mappings = {
     -- Leader
-    vim.keymap.set('n', '<leader>tc', '<cmd>Telescope lsp_code_actions<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>td', '<cmd>Telescope diagnostics layout_strategy=bottom_pane<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>tf', '<cmd>Telescope file_browser layout_strategy=vertical<CR>', { desc = 'buffers' })
-    vim.keymap.set('n', '<leader>th', '<cmd>Telescope help_tags<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>tq', '<cmd>Telescope quickfix<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>tr', '<cmd>Telescope lsp_references<CR>', { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>ts', '<cmd>Telescope lsp_document_symbols<CR>', { desc = 'Find files' })
+    -- leader-a
+    -- leader-b
+    -- leader-c
+    -- leader-d → Trouble(diagnostics)
+    {
+        key = '<leader>dc',
+        map = {
+            { mode = 'n', action = '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', opts = { desc = 'Toggle document diagnostics' } },
+        },
+        plugin = 'trouble',
+    },
+    {
+        key = '<leader>dw',
+        map = {
+            { mode = 'n', action = '<cmd>Trouble diagnostics toggle<CR>', opts = { desc = 'Workspace diagnostics' } },
+        },
+        plugin = 'trouble',
+    },
+    -- leader-e
+    -- leader-f
+    -- leader-g
+    -- leader-h
+    -- leader-i
+    -- leader-j
+    -- leader-k
+    -- leader-l
+    -- leader-m
+    -- leader-n
+    -- leader-o
+    -- leader-p
+    -- leader-q
+    -- leader-r
+    -- leader-s
+    -- leader-t → Telescope
+    {
+        key = '<leader>ta',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope autocommands<CR>', opts = { desc = 'Autocommands' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tb',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope buffers<CR>', opts = { desc = 'Buffers' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tc',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts = { desc = 'Code actions' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tdf',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope lsp_definitions<CR>', opts = { desc = 'LSP Definitions' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tdi',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope diagnostics<CR>', opts = { desc = 'Diagnostics' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>te',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope file_browser<CR>', opts = { desc = 'File browser' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tf',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope find_files<CR>', opts = { desc = 'Find files' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tgf',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope git_files<CR>', opts = { desc = 'Git files' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tgs',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope git_status<CR>', opts = { desc = 'Git status' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>th',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope help_tags<CR>', opts = { desc = 'Help tags' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>ti',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope lsp_implementations<CR>', opts = { desc = 'LSP Implementations' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tj',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope jumplist<CR>', opts = { desc = 'Jumplist' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tk',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope keymaps<CR>', opts = { desc = 'Keymaps' } },
+        },
+    },
+    {
+        key = '<leader>tl',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope live_grep<CR>', opts = { desc = 'Live grep' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tm',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope marks<CR>', opts = { desc = 'Marks' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tn',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope notify<CR>', opts = { desc = 'Notify' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>to',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope oldfiles<CR>', opts = { desc = 'Old files' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tq',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope quickfix<CR>', opts = { desc = 'Quickfix' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tr',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope lsp_references<CR>', opts = { desc = 'References' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>ts',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope lsp_document_symbols<CR>', opts = { desc = 'Document symbols' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tt',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope treesitter<CR>', opts = { desc = 'Treesitter' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tv',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope vim_options<CR>', opts = { desc = 'Vim commands' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tz',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope search_history<CR>', opts = { desc = 'Search history' } },
+        },
+        plugin = 'telescope',
+    },
+    {
+        key = '<leader>tw',
+        map = {
+            { mode = 'n', action = '<cmd>Telescope grep_string<CR>', opts = { desc = 'Grep string = current word' } },
+        },
+        plugin = 'telescope',
+    },
+    -- leader-u
+    -- leader-v
+    -- leader-w
+    -- leader-x
+    -- leader-y
+    -- leader-z
+    -- leader-0
+    -- leader-1
+    -- leader-2
+    -- leader-3
+    -- leader-4
+    -- leader-5
+    -- leader-6
+    -- leader-7
+    -- leader-8
+    -- leader-9
+    -- leader-!
+    -- leader-@
+    -- leader-#
+    -- leader-$
+    -- leader-%
+    -- leader-^
+    -- leader-*
+    -- leader-(
+    -- leader-)
+    -- leader-_
+    -- leader-+
+    -- leader-=
+    -- leader-`
+    -- leader-~
+    -- leader-[
+    -- leader-]
+    -- leader-{
+    -- leader-}
+    -- leader-|
+    -- leader-;
+    -- leader-:
+    -- leader-'
+    -- leader-"
+    -- leader-,
+    -- leader-.
+    -- leader-<
+    -- leader->
+    -- leader-/
+    -- leader-?
+    -- leader-\
+    -- leader-`
+    {
+        key = "<leader>'",
+        map = {
+            { mode = 'n', action = '<cmd>Telescope marks<CR>', opts = { desc = 'Marks' } },
+        },
+        plugin = 'telescope',
+    },
+}
+
+local mappings = {}
+for _, mapping in ipairs(only_letter_mappings) do
+    table.insert(mappings, mapping)
+end
+for _, mapping in ipairs(special_keys_mappings) do
+    table.insert(mappings, mapping)
+end
+for _, mapping in ipairs(function_keys_mappings) do
+    table.insert(mappings, mapping)
+end
+for _, mapping in ipairs(cmd_keys_mappings) do
+    table.insert(mappings, mapping)
+end
+for _, mapping in ipairs(leader_keys_mappings) do
+    table.insert(mappings, mapping)
 end
 
-M.set_dap_keymaps = function(dap)
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F11>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<F8>', dap.close, { desc = 'Debug: Close' })
-    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>dr', dap.repl.toggle, { desc = 'DAPrepl toggle' })
-    vim.keymap.set('n', '<leader>B', function()
-        dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
-    -- vim.keymap.set('n', '<leader>do', dapui.open, { desc = 'DAPUI open' })
-    -- vim.keymap.set('n', '<leader>dc', dapui.close, { desc = 'DAPUI Close' })
-    -- vim.keymap.set('n', '<leader>dro', dap.repl.open, { desc = 'DAPrepl open' })
-    -- vim.keymap.set('n', '<leader>drc', dap.repl.close, { desc = 'DAPrepl close' })
-    --
-    -- vim.keymap.set('n', '<leader>djtc', '<cmd>JavaTestDebugCurrentClass<CR>', { desc = 'nvim-java: test current class' })
-    -- vim.keymap.set('n', '<leader>djtm', '<cmd>JavaTestDebugCurrentMethod<CR>', { desc = 'nvim-java: test current method' })
+local cmp_keymap = {}
+local dap_setters = {}
+local lsp_setters = {}
+local telescope_setters = {}
+local trouble_setters = {}
+
+for _, mapping in ipairs(mappings) do
+    for _, map in ipairs(mapping.map) do
+        local opts = vim.tbl_extend('force', map_opts, map.opts)
+        if not mapping.plugin then
+            -- set builtin keymaps directly
+            set_keymap(map.mode, mapping.key, map.action, opts)
+        else
+            if mapping.plugin == 'cmp' then
+                -- collect all cmp keymap setters to be called after cmp is loaded
+                -- See set_cmp_keymaps function below and completion.lua
+                cmp_keymap[mapping.key] = map.action
+            elseif mapping.plugin == 'dap' then
+                -- collect all dap keymap setters to be called after dap is loaded
+                -- See set_dap_keymaps function below and dap.lua
+                table.insert(dap_setters, function()
+                    set_keymap(map.mode, mapping.key, map.action, opts)
+                end)
+            elseif mapping.plugin == 'lspconfig' then
+                -- collect all lsp keymap setters to be called after lspconfig is loaded
+                -- See set_lsp_keymaps function below and lsp.lua
+                table.insert(lsp_setters, function()
+                    set_keymap(map.mode, mapping.key, map.action, opts)
+                end)
+            elseif mapping.plugin == 'telescope' then
+                -- collect all telescope keymap setters to be called after telescope is loaded
+                -- See set_telescope_keymaps function below and telescope.lua
+                table.insert(telescope_setters, function()
+                    set_keymap(map.mode, mapping.key, map.action, opts)
+                end)
+            elseif mapping.plugin == 'trouble' then
+                -- collect all trouble keymap setters to be called after trouble is loaded
+                -- See set_trouble_keymaps function below and trouble.lua
+                table.insert(trouble_setters, function()
+                    set_keymap(map.mode, mapping.key, map.action, opts)
+                end)
+            else
+                vim.notify('Unknown plugin: ' .. mapping.plugin)
+            end
+        end
+    end
 end
 
-M.set_trouble_keymaps = function(trouble)
-    vim.keymap.set('n', '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', { desc = 'Toggle Document Diagnostics' })
-    vim.keymap.set('n', '<leader>xa', '<cmd>Trouble diagnostics toggle<CR>', { desc = 'Toggle All Diagnostics' })
+-- this method is expected to be called after telescope is loaded.
+-- See telescope.lua
+M.set_telescope_keymaps = function()
+    for _, setter in ipairs(telescope_setters) do
+        setter()
+    end
+end
+
+M.set_trouble_keymaps = function()
+    for _, setter in ipairs(trouble_setters) do
+        setter()
+    end
+end
+
+M.set_lsp_keymaps = function()
+    for _, setter in ipairs(lsp_setters) do
+        setter()
+    end
+end
+
+M.set_cmp_keymaps = function()
+    local tbl = {}
+    for key, cmp_func in pairs(cmp_keymap) do
+        tbl[key] = cmp_func()
+    end
+    return require('cmp').mapping.preset.insert(tbl)
+end
+
+M.set_dap_keymaps = function()
+    for _, setter in ipairs(dap_setters) do
+        setter()
+    end
 end
 
 return M

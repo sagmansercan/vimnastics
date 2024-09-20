@@ -50,7 +50,7 @@ return {
             -- },
 
             -- `:help ins-completion`
-            mapping = keymaps.set_cmp_keymaps(cmp),
+            mapping = keymaps.set_cmp_keymaps(),
             sources = {
                 { name = 'nvim_lsp' },
                 { name = 'path' },

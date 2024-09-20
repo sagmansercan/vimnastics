@@ -144,7 +144,7 @@ return {
         pcall(require('telescope').load_extension, 'fzf')
         -- pcall(require('telescope').load_extension, 'ui-select')
         -- pcall(require('telescope').load_extension, 'dap')
-        keymaps.set_telescope_keymaps(M)
+        keymaps.set_telescope_keymaps()
     end,
 }
 
