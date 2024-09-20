@@ -62,7 +62,7 @@ return {
                         newfile = '[New]', -- Text to show for newly created file before first write
                     },
                     color = function(_)
-                        return { fg = vim.bo.modified and '#ffffff' or '#f5f1c0', bg = vim.bo.modified and '#3f4639' or '#071a10' }
+                        return { fg = vim.bo.modified and '#ffffff' or '#f5f1c0', bg = vim.bo.modified and '#326639' or '#071a10' }
                     end,
                     padding = 90,
                     icon = '📁',
