@@ -50,3 +50,8 @@ vim.opt.smartcase = true
 -- vim.opt.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- vim.opt.timeoutlen = 1000
+
+-- pop up menu options
+vim.opt.pumblend = 0
+vim.opt.pumheight = 10
+vim.opt.pumwidth = 20
