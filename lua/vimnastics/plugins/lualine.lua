@@ -6,7 +6,7 @@ return {
             icons_enabled = true,
             theme = 'auto',
             component_separators = { left = '', right = '' },
-            section_separators = { left = '', right = '' },
+            section_separators = { left = ' | ', right = ' | ' },
             disabled_filetypes = {
                 statusline = {},
                 winbar = {},
@@ -22,7 +22,31 @@ return {
         },
         sections = {
             lualine_a = { 'mode' },
-            lualine_b = { 'branch', 'diff', 'diagnostics' },
+            lualine_b = {
+                { 'branch', color = { fg = '#ffffff', bg = '#002813' } },
+                { 'diff', color = { bg = '#000000' } },
+                {
+                    'diagnostics',
+                    color = function()
+                        local diagnostics_table = vim.diagnostic.get(vim.api.nvim_get_current_buf())
+                        if not diagnostics_table then
+                            return { bg = '#000000' }
+                        end
+
+                        for _, v in pairs(diagnostics_table) do
+                            if v.severity == vim.diagnostic.severity.ERROR then
+                                -- return { fg = '#000000', bg = '#ff0000' }
+                                return { bg = '#ffffff' }
+                            end
+                        end
+                        return { bg = '#000000' }
+                        -- return {
+                        --     -- fg = diagnostic_count > 0 and '#ffffff' or '#000000',
+                        --     -- bg = diagnostic_count > 0 and '#aa3355' or '#228855',
+                        -- }
+                    end,
+                },
+            },
             lualine_c = {
                 {
                     'filename',
@@ -43,8 +67,10 @@ return {
                         newfile = '[New]', -- Text to show for newly created file before first write
                     },
                     color = function(_)
-                        return { fg = vim.bo.modified and '#aa3355' or '#33aa88' }
+                        return { fg = vim.bo.modified and '#000000' or '#000000', bg = vim.bo.modified and '#903f00' or '#1f7047' }
                     end,
+                    padding = 100,
+                    icon = '📁',
                 },
             },
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
